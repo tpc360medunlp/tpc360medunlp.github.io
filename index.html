@@ -1685,6 +1685,11 @@ async function ensureJsQR() {
       <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray-600);margin:6px 0">
         <input type="checkbox" id="field-teorico-comun" onchange="toggleTeoricoComunUI()"> Común a todas las comisiones de esta materia
       </label>
+      <div id="field-teorico-asistencia-group" style="display:none;margin-bottom:6px">
+        <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray-600)">
+          <input type="checkbox" id="field-teorico-asistencia"> Tomar asistencia en este teórico
+        </label>
+      </div>
       <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray-600);margin-bottom:8px">
         <input type="checkbox" id="field-teorico-async" onchange="toggleTeoricoAsyncUI()"> Asincrónicos (sin día/horario/lugar fijo)
       </label>
@@ -9318,6 +9323,8 @@ function openComisionModalForMateria(materiaId) {
   document.getElementById('field-comision-nombre').value = '';
   document.getElementById('field-periodo-group').style.display = 'none';
   document.getElementById('field-teorico-comun').checked = false;
+  document.getElementById('field-teorico-asistencia').checked = false;
+  document.getElementById('field-teorico-asistencia-group').style.display = 'none';
   document.getElementById('field-teorico-async').checked = false;
   document.getElementById('field-teorico-dia').value = '';
   document.getElementById('field-teorico-horario').value = '';
@@ -9634,10 +9641,14 @@ function toggleTeoricoAsyncUI() {
 // "común", y si la hay, precarga sus datos (el usuario los puede seguir editando).
 function cargarTeoricoComunSiExiste() {
   const materiaId = document.getElementById('field-comision-materia').value;
-  const comunExistente = COMISIONES.find(c => c.materiaId === materiaId && c.teorico?.comun);
+  const periodoSel = document.getElementById('field-comision-periodo');
+  const periodo = periodoSel && periodoSel.offsetParent !== null ? Number(periodoSel.value) || 1 : 1;
+  const comunExistente = COMISIONES.find(c => c.materiaId === materiaId && c.teorico?.comun && (c.periodo||1) === periodo);
   if (!comunExistente) return;
   const t = comunExistente.teorico;
   document.getElementById('field-teorico-comun').checked = true;
+  document.getElementById('field-teorico-asistencia-group').style.display = 'block';
+  document.getElementById('field-teorico-asistencia').checked = !!t.tomaAsistencia;
   document.getElementById('field-teorico-async').checked = !!t.asincronico;
   document.getElementById('field-teorico-dia').value      = t.dia || '';
   document.getElementById('field-teorico-horario').value  = t.horario || '';
@@ -9646,8 +9657,12 @@ function cargarTeoricoComunSiExiste() {
 }
 
 function toggleTeoricoComunUI() {
-  if (document.getElementById('field-teorico-comun').checked) {
+  const esComun = document.getElementById('field-teorico-comun').checked;
+  document.getElementById('field-teorico-asistencia-group').style.display = esComun ? 'block' : 'none';
+  if (esComun) {
     cargarTeoricoComunSiExiste();
+  } else {
+    document.getElementById('field-teorico-asistencia').checked = false;
   }
 }
 
@@ -9685,6 +9700,8 @@ function openComisionModal() {
   document.getElementById('field-comision-nombre').value = '';
   document.getElementById('field-periodo-group').style.display = 'none';
   document.getElementById('field-teorico-comun').checked = false;
+  document.getElementById('field-teorico-asistencia').checked = false;
+  document.getElementById('field-teorico-asistencia-group').style.display = 'none';
   document.getElementById('field-teorico-async').checked = false;
   document.getElementById('field-teorico-dia').value = '';
   document.getElementById('field-teorico-horario').value = '';
@@ -9715,6 +9732,8 @@ function openEditComisionModal(comisionId) {
   const t = c.teorico || {};
   const p = c.practico || {};
   document.getElementById('field-teorico-comun').checked = !!t.comun;
+  document.getElementById('field-teorico-asistencia-group').style.display = t.comun ? 'block' : 'none';
+  document.getElementById('field-teorico-asistencia').checked = !!t.tomaAsistencia;
   document.getElementById('field-teorico-async').checked = !!t.asincronico;
   document.getElementById('field-teorico-dia').value      = t.dia || '';
   document.getElementById('field-teorico-horario').value  = t.horario || '';
@@ -9749,9 +9768,11 @@ async function confirmAddComision() {
 
   const teoricoComun = document.getElementById('field-teorico-comun').checked;
   const teoricoAsync = document.getElementById('field-teorico-async').checked;
+  const teoricoTomaAsistencia = teoricoComun && document.getElementById('field-teorico-asistencia').checked;
   const teorico = {
     comun: teoricoComun,
     asincronico: teoricoAsync,
+    tomaAsistencia: teoricoTomaAsistencia,
     dia:     teoricoAsync ? '' : document.getElementById('field-teorico-dia').value,
     horario: teoricoAsync ? '' : document.getElementById('field-teorico-horario').value.trim(),
     lugar:   teoricoAsync ? '' : document.getElementById('field-teorico-lugar').value.trim(),
@@ -9762,9 +9783,10 @@ async function confirmAddComision() {
     lugar:   document.getElementById('field-practico-lugar').value.trim(),
   };
 
-  // Otras comisiones "comunes" de la misma materia a las que hay que propagarles el teórico
+  // Otras comisiones "comunes" del mismo período de la misma materia a las que hay
+  // que propagarles el teórico (no mezclar 1er y 2do cuatrimestre)
   const propagarA = teoricoComun
-    ? COMISIONES.filter(c => c.materiaId === materiaId && c.teorico?.comun && c.id !== editingComisionId)
+    ? COMISIONES.filter(c => c.materiaId === materiaId && c.teorico?.comun && c.id !== editingComisionId && (c.periodo||1) === periodo)
     : [];
 
   if (editingComisionId) {
