@@ -2228,6 +2228,8 @@ async function loadDataFromSupabase() {
           alumnos: emails,
           teorico: c.teorico || null,
           practico: c.practico || null,
+          es_teorico_comun: c.es_teorico_comun || false,
+          activo: c.activo !== false,
         });
       });
     }
@@ -9754,6 +9756,44 @@ function closeComisionModal() {
   document.getElementById('modal-nueva-comision').classList.remove('open');
 }
 
+// Crea, reactiva o desactiva la comisión especial que representa el teórico común
+// de una materia+período+año — nunca la borra (para no perder asistencia ya tomada).
+async function sincronizarComisionTeoricoComun(materiaId, periodo, año, debeEstarActivo) {
+  const existente = COMISIONES.find(c =>
+    c.materiaId === materiaId && (c.periodo||1) === periodo && c.año === año && c.es_teorico_comun
+  );
+
+  if (existente) {
+    if (!!existente.activo === !!debeEstarActivo) return; // ya está en el estado correcto
+    existente.activo = debeEstarActivo;
+    const { error } = await _supabase.from('comisiones').update({ activo: debeEstarActivo }).eq('id', existente.id);
+    if (error) {
+      console.warn('Error actualizando estado del teórico común:', error);
+      existente.activo = !debeEstarActivo;
+    }
+    return;
+  }
+
+  if (!debeEstarActivo) return; // no existe y no hace falta crearla
+
+  const materia = MATERIAS.find(m => m.id === materiaId);
+  const id = 'tc' + Date.now();
+  const nueva = {
+    id, materiaId, nombre: 'Teórico común', docenteDni: null, año, periodo,
+    alumnos: [], teorico: null, practico: null,
+    es_teorico_comun: true, activo: true
+  };
+  COMISIONES.push(nueva);
+  const { error } = await _supabase.from('comisiones').insert({
+    id, materia_id: materiaId, nombre: 'Teórico común', docente_dni: null, año, periodo,
+    es_teorico_comun: true, activo: true
+  });
+  if (error) {
+    console.warn('Error creando comisión de teórico común:', error);
+    COMISIONES.splice(COMISIONES.indexOf(nueva), 1);
+  }
+}
+
 async function confirmAddComision() {
   const año        = parseInt(document.getElementById('field-comision-año').value);
   const materiaId  = document.getElementById('field-comision-materia').value;
@@ -9821,6 +9861,7 @@ async function confirmAddComision() {
     showToast(propagarA.length > 0
       ? `Comisión actualizada — teórico también actualizado en ${propagarA.length} comisión/es más`
       : 'Comisión actualizada correctamente');
+    await sincronizarComisionTeoricoComun(materiaId, periodo, año, teoricoTomaAsistencia);
   } else {
     const id = 'c' + Date.now();
     const nueva = { id, materiaId, nombre, docenteDni, año, periodo, alumnos: [], teorico, practico };
@@ -9852,6 +9893,7 @@ async function confirmAddComision() {
     showToast(propagarA.length > 0
       ? `Comisión agregada — teórico también actualizado en ${propagarA.length} comisión/es más`
       : 'Comisión agregada correctamente');
+    await sincronizarComisionTeoricoComun(materiaId, periodo, año, teoricoTomaAsistencia);
   }
 }
 document.getElementById('modal-nueva-comision').dataset.closable='true'; document.getElementById('modal-nueva-comision')._closeModal=function(){closeComisionModal()};
