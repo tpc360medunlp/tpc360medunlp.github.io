@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TPC360 · Plataforma de Seguimiento Académico</title>
+<meta name="description" content="TPC360 es la plataforma de gestión académica de la Tecnicatura en Prácticas Cardiológicas de la Facultad de Ciencias Médicas, UNLP.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f8f9fb;
+    color: #2d3348;
+  }
+  header {
+    background: #0B1F3A;
+    color: white;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .logo {
+    width: 72px;
+    height: 72px;
+    background: #00897B;
+    border-radius: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  header p  { font-size: 15px; opacity: .7; max-width: 480px; margin: 0 auto; }
+  .badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 14px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+  main {
+    max-width: 800px;
+    margin: 48px auto;
+    padding: 0 24px 60px;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #999;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  .card-icon { font-size: 28px; margin-bottom: 12px; }
+  .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: #0B1F3A; }
+  .card p  { font-size: 13px; color: #666; line-height: 1.6; }
+  .cta {
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  .cta h2 { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #0B1F3A; }
+  .cta p  { font-size: 14px; color: #666; margin-bottom: 20px; }
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #0B1F3A;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: #aaa;
+  }
+  footer a { color: #aaa; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6317.49 5923.86" style="width:100%;height:100%"><path fill="white" d="M1430.88 1510.99l0.01 326.51 -98.09 0c-111.05,0 -208.56,-73.12 -217.69,-163.24 -9.15,-90.15 73.53,-163.27 184.58,-163.27l131.18 0z"/><path fill="white" d="M1383.73 1510.99l0 326.51 1051.21 0c81.96,0 151.59,-40.38 176.11,-102.01l74.99 -362.98 192.61 668.88c32.35,69.32 107.74,126.81 196.83,126.81 81.41,0 153.76,-19.45 193.15,-122.55 25.88,-134.98 80.72,-349.17 102.45,-493.39l88.01 238.08c20.2,47.31 80.88,83.16 139.73,97.29 44.44,10.68 154.04,9.3 198.39,9.3l640.75 0c111.04,0 193.7,-73.12 184.58,-163.25 -9.15,-90.13 -106.64,-163.24 -217.68,-163.24l-736.1 0 -147.17 -296.49c-33.55,-67.6 -115.66,-113.41 -203.09,-113.41 -87.5,0 -160.27,45.95 -180.04,113.58l-91.49 172.13 -179.35 -475.47c-31.01,-66.52 -109.22,-113.33 -194.96,-116.69 -84.89,-3.33 -160.53,38.12 -185.83,101.8l-220.56 555.09 -482.1 0 -400.43 0z"/><path fill="white" d="M3265.59 4400.01c-30.23,28.34 -71.02,44.06 -112.51,43.32 -48.8,0.91 -95.75,-20.74 -126.67,-58.32 -85.69,-49.81 -174.37,-94.35 -263.95,-136.7 -215.89,-102.08 -440.08,-187.23 -669.64,-253.09 -612.82,-175.82 -1272.52,-211.27 -1875.59,21.73 -81.95,31.66 -174.86,-9.42 -206.52,-91.37 -22.1,-57.18 -9.4,-122.56 32.72,-167.16l847.5 -897.39c28.15,-29.81 66.47,-47.62 107.41,-49.93 86.47,-4.87 173.17,-3.01 259.63,0.91 105.92,4.79 211.71,14.15 316.82,28.38 -218.36,-117.82 -450.92,-206.11 -694.3,-259.36 -62.58,-13.8 -111.26,-63.79 -123.06,-126.83 -16.19,-86.53 40.94,-169.9 127.35,-186.39l1201.34 -229.2c41.71,-9.68 85.43,-2.21 121.63,20.67 66.77,42.21 129.06,91.41 189.37,142.3 334.37,282.13 601.49,653.33 755.91,1062.95 154.44,-409.66 421.72,-781.05 756.18,-1063.15 53.89,-45.46 109.26,-89.44 168.05,-128.43 281,-314.48 467.07,-695.74 467.07,-1123.67 0,-167.06 -66.71,-322.44 -185.83,-439.25 -121.59,-119.23 -282.47,-183.52 -452.55,-183.52 -264.51,0 -506.44,159.82 -599.78,409 -23.88,63.75 -84.8,106 -152.88,106 -68.07,0 -129,-42.24 -152.88,-105.99 -93.35,-249.21 -335.23,-409.01 -599.79,-409.01 -170.08,0 -330.94,64.29 -452.54,183.52 -119.11,116.81 -185.82,272.19 -185.82,439.25 0,224.99 56.19,441.4 154.4,642.78l-356.46 0c-80.62,-205.25 -124.45,-421.53 -124.45,-642.78 0,-255.12 101.76,-493.91 283.75,-672.36 182.81,-179.25 425.3,-276.92 681.11,-276.92 291.96,0 568.19,129.29 752.66,354.99 184.47,-225.71 460.68,-354.99 752.65,-354.99 255.81,0 498.33,97.67 681.12,276.92 181.99,178.46 283.77,417.24 283.77,672.36 0,420.9 -155.39,802.67 -401.82,1136.84l952.29 181.69c86.41,16.48 143.56,99.86 127.35,186.39 -11.81,63.04 -60.48,113.04 -123.07,126.83 -244.83,53.57 -478.7,142.59 -698.18,261.45 110.13,-15.42 221.03,-25.45 332.08,-30.47 86.47,-3.92 173.17,-5.78 259.63,-0.91 40.94,2.3 79.26,20.11 107.41,49.93l847.53 897.38c42.15,44.63 54.83,109.96 32.71,167.18 -31.67,81.94 -124.59,123.02 -206.52,91.36 -768.25,-296.83 -1630.95,-159.05 -2371.53,153.54 -158.49,66.9 -315.48,140.94 -463.13,229.51zm-550.52 -1037.05c52.66,52.09 102.15,107.38 148.14,165.44 21.42,27.05 42.53,54.35 63.32,81.89 -71.85,-285.28 -200.54,-549.99 -378.76,-786.62 -128.25,-170.28 -287.31,-335.06 -461.04,-459.89l-545.01 103.99c450.68,207 846.95,523.52 1173.36,895.2zm2.14 514.97c-71.36,-99.73 -147.38,-196.14 -227.68,-288.81 -193.61,-190.65 -437.21,-326.73 -702.75,-386.5 -230.07,-51.78 -472.58,-78.47 -708.67,-74.42l-416.63 441.15c691.02,-109.2 1416.51,37.54 2055.73,308.58zm868.75 6.13c642.13,-275.05 1373.37,-424.67 2070.02,-314.7l-416.64 -441.16c-236.09,-4.05 -478.6,22.64 -708.67,74.42 -326.47,73.47 -618.63,261.98 -826.04,523.84 -40.83,51.55 -80.41,104.12 -118.67,157.59zm-211.55 -253.02c362.75,-488.24 835.68,-908.73 1389.96,-1163.29l-545.04 -103.98c-173.73,124.83 -332.78,289.62 -461.03,459.89 -182.66,242.53 -313.15,514.34 -383.88,807.37z"/><path fill="white" d="M4696.66 4079.86c330.55,129.2 531.89,300.22 531.89,487.83 0,402.65 -926.68,729.04 -2069.8,729.04 -1143.12,0 -2069.81,-326.38 -2069.81,-729.04 0,-187.61 201.35,-358.63 531.89,-487.83 -600.01,151.49 -987.07,389.27 -987.07,656.88 0,457.54 1130.48,828.45 2524.98,828.45 1394.49,0 2524.97,-370.91 2524.97,-828.45 0,-267.61 -387.06,-505.42 -987.07,-656.88z"/><path fill="white" d="M3158.76 5785.84c-1499.86,0 -2353.41,-483.45 -2353.41,-483.45 0,0 782.45,621.47 2353.41,621.47 1570.95,0 2353.4,-621.47 2353.4,-621.47 0,0 -853.55,483.45 -2353.4,483.45z"/></svg>
+  </div>
+  <h1>TPC360</h1>
+  <p>Plataforma de Seguimiento Académico de la Tecnicatura en Prácticas Cardiológicas</p>
+  <span class="badge">Facultad de Ciencias Médicas · UNLP</span>
+</header>
+
+<main>
+
+  <p class="section-title">¿Qué es TPC360?</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h3>Gestión académica integral</h3>
+      <p>Sistema de seguimiento de asistencia, calificaciones de parciales y finales para los alumnos de TPC.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>Portfolio de habilidades</h3>
+      <p>Registro y validación de prácticas realizadas por los alumnos durante la carrera.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📄</div>
+      <h3>Certificados digitales</h3>
+      <p>Generación automática de certificados de parciales y solicitudes de certificados de finales.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📢</div>
+      <h3>Cartelera virtual</h3>
+      <p>Publicaciones actualizadas de todas las cátedras de TPC directamente desde la cartelera de la FCM.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <h3>Gestión de comisiones</h3>
+      <p>Solicitudes de cambio de comisión con CUdE (Certificado Único de Estudiante) para todas las asignaturas.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎓</div>
+      <h3>Ruta de carrera</h3>
+      <p>Seguimiento del progreso académico de cada alumno: materias cursadas, finales rendidos y estado actual.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Acceder a TPC360</h2>
+    <p>El acceso está restringido a alumnos, docentes y coordinación de la Tecnicatura en Prácticas Cardiológicas de la FCM-UNLP.</p>
+    <a href="https://tpc360medunlp.github.io/app/" class="btn">Iniciar sesión →</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>TPC360 · Tecnicatura en Prácticas Cardiológicas · Facultad de Ciencias Médicas · UNLP</p>
+  <p style="margin-top:6px"><a href="privacy.html">Política de Privacidad</a></p>
+</footer>
+
+</body>
+</html>
