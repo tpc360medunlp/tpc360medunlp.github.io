@@ -3274,30 +3274,11 @@ async function enterApp() {
 
 function doLogout() {
   stopQrIntervalsIfRunning();
-  window._justLoggedOut = true;
-  const rolAnterior = currentRole; // guardar antes de resetear
   localStorage.removeItem('tpc360_verified');
   ['student','teacher','coordinator'].forEach(r => sessionStorage.removeItem('tpc360_last_view_'+r));
-  _supabase.auth.signOut(); // cerrar sesión en Supabase
-  googleEmail          = '';
-  currentUser          = null;
-  currentRole          = 'student';
-  teacherPortfolioTab  = 'pending';
-  currentStatsTab      = 'portfolio';
-  _studentNotasCiclo      = null;
-  _studentAsistenciaCiclo = null;
-  _studentNotasTab        = 'parciales';
-  window._studentCertCiclo= null;
-  _cortesfecha            = null;
-  window._cortesfecha     = null;
-  _srMateriaId            = null;
-  document.getElementById('login-step1').style.display = 'block';
-  document.getElementById('login-step2').style.display = 'none';
-  document.getElementById('reg-error').style.display = 'none';
-  document.getElementById('screen-app').classList.remove('active');
-  document.getElementById('screen-login').classList.add('active');
-  window._notifShown = false;
-  setLoginRole(rolAnterior); // volver al mismo rol
+  _supabase.auth.signOut().finally(() => {
+    location.reload();
+  });
 }
 
 // ── SIDEBAR ──────────────────────────────────────────────
