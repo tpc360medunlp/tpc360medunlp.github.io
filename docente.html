@@ -1321,6 +1321,22 @@ async function ensureJsQR() {
   </div>
 </div>
 
+<!-- MODAL: eliminar registro de notas -->
+<div class="modal-overlay" id="modal-delete-registro-notas">
+  <div class="modal" style="max-width:420px">
+    <h2 class="modal-title">Eliminar registro de notas</h2>
+    <p class="modal-sub">Esta acción no se puede deshacer.</p>
+    <div style="background:var(--red-light);border:1px solid #f5b8be;border-radius:var(--radius-md);padding:12px 16px;margin-bottom:1.25rem">
+      <div style="font-size:14px;font-weight:500;color:#b02030" id="delete-registro-notas-detalle"></div>
+      <div style="font-size:13px;color:#b02030;margin-top:4px">Se eliminarán las notas cargadas de todos los alumnos para esta fecha.</div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeDeleteRegistroNotasModal()">Cancelar</button>
+      <button class="btn-primary" style="background:var(--red)" onclick="confirmDeleteRegistroNotas()">Eliminar registro</button>
+    </div>
+  </div>
+</div>
+
 <!-- MODAL: QR asistencia -->
 <div class="modal-overlay" id="modal-qr">
   <div class="modal" style="max-width:400px;text-align:center">
@@ -4412,9 +4428,9 @@ function _renderNotasViewInternal(selectedComId, selectedParcial, selectedFecha)
       <span style="font-size:14px;font-weight:500;color:var(--navy)">${selFecha}</span>
     </div>
     <div class="area-card">
-      <div class="area-header">
+      <div class="area-header" style="flex-wrap:wrap;row-gap:8px">
         <span class="area-name">${getMateriaName(comision.materiaId)} · ${comision.nombre} · ${selParc} · ${selFecha}</span>
-        <div style="display:flex;align-items:center;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           <span id="${notasSavedId}" style="font-size:12px;font-weight:500;opacity:0;transition:opacity 0.3s;color:#1a7a35"></span>
           <span style="font-size:12px;color:var(--gray-400)">${alumnosHabilitados.length} habilitado/s</span>
           ${publicado
@@ -4442,6 +4458,10 @@ function _renderNotasViewInternal(selectedComId, selectedParcial, selectedFecha)
                 </button>
               </div>`
           }
+          <button onclick="confirmarEliminarRegistroNotas('${selCom}','${selParc}','${selFecha}')" title="Eliminar registro"
+            style="padding:5px 9px;font-size:12px;border-radius:var(--radius-md);border:1px solid var(--gray-200);background:white;color:var(--gray-500);cursor:pointer;font-family:var(--font)">
+            🗑️
+          </button>
         </div>
       </div>
       ${alumnosHabilitados.length === 0
@@ -8734,6 +8754,48 @@ async function confirmDeleteRegistro() {
   renderAttendanceView(deleteComId, today, 'manual');
 }
 document.getElementById('modal-delete-registro').dataset.closable='true'; document.getElementById('modal-delete-registro')._closeModal=function(){closeDeleteRegistroModal()};
+
+// ── DELETE REGISTRO DE NOTAS ─────────────────────────────
+let deleteNotasComId = null, deleteNotasParcial = null, deleteNotasFecha = null;
+
+function confirmarEliminarRegistroNotas(comId, parcial, fecha) {
+  deleteNotasComId = comId;
+  deleteNotasParcial = parcial;
+  deleteNotasFecha = fecha;
+  document.getElementById('delete-registro-notas-detalle').textContent = `${parcial} · ${formatFecha(fecha)}`;
+  document.getElementById('modal-delete-registro-notas').classList.add('open');
+}
+function closeDeleteRegistroNotasModal() {
+  document.getElementById('modal-delete-registro-notas').classList.remove('open');
+}
+async function confirmDeleteRegistroNotas() {
+  const registroAnterior = parciales[deleteNotasComId]?.[deleteNotasParcial]?.[deleteNotasFecha];
+  if (parciales[deleteNotasComId]?.[deleteNotasParcial]) {
+    delete parciales[deleteNotasComId][deleteNotasParcial][deleteNotasFecha];
+  }
+  const { error } = await _supabase.from('parciales')
+    .delete()
+    .eq('comision_id', deleteNotasComId)
+    .eq('parcial', deleteNotasParcial)
+    .eq('fecha_parcial', deleteNotasFecha);
+
+  if (error) {
+    console.warn('Error eliminando registro de notas:', error);
+    if (registroAnterior) {
+      if (!parciales[deleteNotasComId]) parciales[deleteNotasComId] = {};
+      if (!parciales[deleteNotasComId][deleteNotasParcial]) parciales[deleteNotasComId][deleteNotasParcial] = {};
+      parciales[deleteNotasComId][deleteNotasParcial][deleteNotasFecha] = registroAnterior;
+    }
+    showToast('No se pudo eliminar el registro. Verificá tu conexión.', true);
+    return;
+  }
+
+  const comIdCerrar = deleteNotasComId, parcialCerrar = deleteNotasParcial;
+  closeDeleteRegistroNotasModal();
+  showToast('Registro de notas eliminado');
+  renderNotasView(comIdCerrar, parcialCerrar, null);
+}
+document.getElementById('modal-delete-registro-notas').dataset.closable='true'; document.getElementById('modal-delete-registro-notas')._closeModal=function(){closeDeleteRegistroNotasModal()};
 
 function showSavedIndicator() {
   const el = document.getElementById('attendance-saved-indicator');
