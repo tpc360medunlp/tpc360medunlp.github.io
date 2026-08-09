@@ -6265,14 +6265,19 @@ async function confirmExportAsistenciaPdf() {
   const com     = COMISIONES.find(c => c.id === comId);
   const materia = MATERIAS.find(m => m.id === com?.materiaId);
   const regs    = asistencia[comId] || {};
-  const alumnosBase = com?.es_teorico_comun
-    ? getAlumnosTeoricoComun(com.materiaId, com.periodo||1, com.año)
-    : (com?.alumnos || []);
-  const alumnos = sortStudentsByApellido(alumnosBase, e => STUDENT_NAMES[e]||e);
+  let comisionPorEmailTeorico = null;
+  let alumnos;
+  if (com?.es_teorico_comun) {
+    const { comisionPorEmail, ordenados } = getComisionesPorAlumnoTeorico(com.materiaId, com.periodo||1, com.año);
+    comisionPorEmailTeorico = comisionPorEmail;
+    alumnos = ordenados;
+  } else {
+    alumnos = sortStudentsByApellido(com?.alumnos || [], e => STUDENT_NAMES[e]||e);
+  }
 
   const titulo    = 'Registro de Asistencia';
   const subtitulo = `${materia?.nombre||''} · ${com?.es_teorico_comun ? '📖 Teórico común' : com?.nombre||''} · Ciclo ${com?.año||''}`;
-  const headers   = ['Apellido y Nombre', 'Documento', ...fechasSel.map(f => {
+  const headers   = ['Apellido y Nombre', ...(comisionPorEmailTeorico ? ['Comisión'] : []), 'Documento', ...fechasSel.map(f => {
     const [y,m,d] = f.split('-');
     return `${d}/${m}/${y.slice(2)}`;
   }), 'Presentes', '% Total'];
@@ -6288,7 +6293,7 @@ async function confirmExportAsistenciaPdf() {
     const pct          = combinado.pct !== null ? combinado.pct + '%' : '—';
     const origen       = getComisionOrigenNombre(email, comId);
     const nombreConOrigen = origen ? `${nombre} (*)` : nombre;
-    return [nombreConOrigen, doc, ...fechasSel.map(f => {
+    return [nombreConOrigen, ...(comisionPorEmailTeorico ? [comisionPorEmailTeorico[email] || ''] : []), doc, ...fechasSel.map(f => {
       if (fechaIngreso && f < fechaIngreso) return '—';
       return regs[f]?.[email]==='presente' ? 'P' : regs[f]?.[email]==='ausente' ? 'A' : '—';
     }), presentes, pct];
@@ -7682,14 +7687,19 @@ function exportAsistencia(comId, fmt='xlsx') {
   const regs    = asistencia[comId] || {};
   const fechas  = Object.keys(regs).filter(f => !regs[f]?._soloControl).sort();
   const fechasControl = Object.keys(regs).filter(f => regs[f]?._soloControl).sort();
-  const alumnosBase = com?.es_teorico_comun
-    ? getAlumnosTeoricoComun(com.materiaId, com.periodo||1, com.año)
-    : (com?.alumnos || []);
-  const alumnos = sortStudentsByApellido(alumnosBase, e => STUDENT_NAMES[e]||e);
+  let comisionPorEmailTeorico = null;
+  let alumnos;
+  if (com?.es_teorico_comun) {
+    const { comisionPorEmail, ordenados } = getComisionesPorAlumnoTeorico(com.materiaId, com.periodo||1, com.año);
+    comisionPorEmailTeorico = comisionPorEmail;
+    alumnos = ordenados;
+  } else {
+    alumnos = sortStudentsByApellido(com?.alumnos || [], e => STUDENT_NAMES[e]||e);
+  }
 
   const titulo    = 'Registro de Asistencia';
   const subtitulo = `${materia?.nombre||''} · ${com?.es_teorico_comun ? '📖 Teórico común' : com?.nombre||''} · Ciclo ${com?.año||''}`;
-  const headers   = ['Apellido y Nombre', 'Documento', ...fechas.map(f => {
+  const headers   = ['Apellido y Nombre', ...(comisionPorEmailTeorico ? ['Comisión'] : []), 'Documento', ...fechas.map(f => {
     const [d,m,a] = formatFecha(f).split('/');
     return `${d}/${m}/${a.slice(2)}`; // dd/mm/aa
   }), 'Presentes', '% Total'];
@@ -7705,7 +7715,7 @@ function exportAsistencia(comId, fmt='xlsx') {
     const pct          = combinado.pct !== null ? combinado.pct + '%' : '—';
     const origen       = getComisionOrigenNombre(email, comId);
     const nombreConOrigen = origen ? `${nombre} (Proviene de ${origen})` : nombre;
-    return [nombreConOrigen, doc, ...fechas.map(f => {
+    return [nombreConOrigen, ...(comisionPorEmailTeorico ? [comisionPorEmailTeorico[email] || ''] : []), doc, ...fechas.map(f => {
       if (fechaIngreso && f < fechaIngreso) return '—';
       return regs[f]?.[email]==='presente' ? 'P' : regs[f]?.[email]==='ausente' ? 'A' : '—';
     }), presentes, pct];
