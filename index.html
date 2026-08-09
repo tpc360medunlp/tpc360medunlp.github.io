@@ -2305,6 +2305,13 @@ async function loadDataFromSupabase() {
           if (!asistencia[comIdCerrado][fechaCerrada]) asistencia[comIdCerrado][fechaCerrada] = {};
           asistencia[comIdCerrado][fechaCerrada]._cerrado = !!c.valor.cerrado;
         }
+        const mSoloControl = c.clave.match(/^asistencia_solocontrol_(.+)_(\d{4}-\d{2}-\d{2})$/);
+        if (mSoloControl && c.valor) {
+          const [, comIdSC, fechaSC] = mSoloControl;
+          if (!asistencia[comIdSC]) asistencia[comIdSC] = {};
+          if (!asistencia[comIdSC][fechaSC]) asistencia[comIdSC][fechaSC] = {};
+          asistencia[comIdSC][fechaSC]._soloControl = !!c.valor.soloControl;
+        }
       });
     }
 
@@ -2521,6 +2528,7 @@ function getFechasAlumnoEnComision(email, comId) {
   return Object.keys(regs)
     .filter(f => regs[f]?.[email] !== undefined)
     .filter(f => !fechaIngreso || f >= fechaIngreso)
+    .filter(f => !regs[f]?._soloControl) // no cuentan para el presentismo del alumno
     .sort();
 }
 
@@ -6142,8 +6150,9 @@ function openFechasPdfModal(comId) {
 
   const chips = fechas.map(f => {
     const [y,m,d] = f.split('-');
-    const label   = `${d}/${m}/${y.slice(2)}`;
-    return `<button type="button" data-fecha="${f}" data-selected="false"
+    const esControl = !!asistencia[comId]?.[f]?._soloControl;
+    const label   = `${d}/${m}/${y.slice(2)}${esControl ? ' 🔸' : ''}`;
+    return `<button type="button" data-fecha="${f}" data-selected="false" title="${esControl ? 'No cuenta para el presentismo' : ''}"
       onclick="toggleFechaChip(this)"
       style="padding:7px 12px;font-size:13px;border-radius:20px;border:1.5px solid var(--gray-200);
       cursor:pointer;font-family:var(--font);font-weight:500;background:white;color:var(--gray-600)">
@@ -6196,7 +6205,8 @@ async function confirmExportAsistenciaPdf() {
   const subtitulo = `${materia?.nombre||''} · ${com?.nombre||''} · Ciclo ${com?.año||''}`;
   const headers   = ['Apellido y Nombre', 'Documento', ...fechasSel.map(f => {
     const [y,m,d] = f.split('-');
-    return `${d}/${m}/${y.slice(2)}`;
+    const esControl = !!regs[f]?._soloControl;
+    return `${d}/${m}/${y.slice(2)}${esControl ? ' 🔸' : ''}`;
   }), 'Presentes', '% Total'];
 
   const rows = alumnos.map(email => {
@@ -6217,7 +6227,11 @@ async function confirmExportAsistenciaPdf() {
   });
 
   // Nota al pie
-  const footerNote = buildCambioFooterNote(alumnos, comId, regs, fechasSel);
+  let footerNote = buildCambioFooterNote(alumnos, comId, regs, fechasSel);
+  if (fechasSel.some(f => regs[f]?._soloControl)) {
+    const nota = ['', '🔸 Fecha de control interno — no se contabiliza para el presentismo del alumno.'];
+    footerNote = footerNote ? [...footerNote, ...nota] : nota;
+  }
 
   const nombre = `Asistencia_${materia?.nombre||'Comision'}_${com?.nombre||''}`;
   exportarPdf(titulo, subtitulo, headers, rows, nombre, true, false, footerNote);
@@ -7596,7 +7610,8 @@ function exportAsistencia(comId, fmt='xlsx') {
   const com     = COMISIONES.find(c => c.id === comId);
   const materia = MATERIAS.find(m => m.id === com?.materiaId);
   const regs    = asistencia[comId] || {};
-  const fechas  = Object.keys(regs).sort();
+  const fechas  = Object.keys(regs).filter(f => !regs[f]?._soloControl).sort();
+  const fechasControl = Object.keys(regs).filter(f => regs[f]?._soloControl).sort();
   const alumnos = sortStudentsByApellido(com?.alumnos || [], e => STUDENT_NAMES[e]||e);
 
   const titulo    = 'Registro de Asistencia';
@@ -7624,7 +7639,23 @@ function exportAsistencia(comId, fmt='xlsx') {
   });
 
   // Nota al pie para alumnos con cambio de comisión
-  const footerNote = buildCambioFooterNote(alumnos, comId, regs, fechas);
+  let footerNote = buildCambioFooterNote(alumnos, comId, regs, fechas);
+
+  // Fechas "de control" (no cuentan para el presentismo) — aparte, no mezcladas
+  // con las columnas normales
+  if (fechasControl.length > 0) {
+    const notaControl = [
+      '',
+      '— Registros de control interno (no contabilizados para el presentismo) —',
+      ...fechasControl.map(f => {
+        const pres = alumnos.filter(e => regs[f]?.[e] === 'presente').map(e => STUDENT_NAMES[e]||e);
+        const aus  = alumnos.filter(e => regs[f]?.[e] === 'ausente').map(e => STUDENT_NAMES[e]||e);
+        return `${formatFecha(f)} — Presentes: ${pres.join(', ')||'—'} · Ausentes: ${aus.join(', ')||'—'}`;
+      })
+    ];
+    footerNote = footerNote ? [...footerNote, ...notaControl] : notaControl;
+  }
+
   if (footerNote && fmt === 'xlsx') {
     rows.push([]);
     footerNote.forEach(l => rows.push([l]));
@@ -8455,6 +8486,12 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
             title="${cerradoF ? 'Reabrí el registro para poder cambiar la fecha' : 'Cambiar la fecha de este registro (elegila con el calendario)'}"
             style="width:160px;font-size:13px;padding:7px 10px;${cerradoF ? 'opacity:0.6;cursor:not-allowed' : ''}">
         </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <input type="checkbox" id="solo-control-${selCom}-${fecha}" ${registro._soloControl ? 'checked' : ''}
+            onchange="guardarSoloControl('${selCom}','${fecha}', this.checked).then(() => renderAttendanceView('${selCom}','${selDate}','${selMode}'))"
+            style="width:15px;height:15px;cursor:pointer">
+          <label for="solo-control-${selCom}-${fecha}" style="font-size:12px;color:var(--gray-500);cursor:pointer">No cuenta para presentismo</label>
+        </div>
         <div style="display:flex;gap:8px;margin-left:auto">
           ${cerradoF
             ? `<button onclick="reabrirRegistroAsistencia('${selCom}','${fecha}')" title="Reabrir para editar"
@@ -8484,16 +8521,18 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
         const total = alumnosFecha.length;
         const pres  = alumnosFecha.filter(e => registro[e] === 'presente').length;
         const rowId = 'att-row-' + fecha.replace(/-/g, '');
+        const soloControlBadge = registro._soloControl
+          ? ` <span style="font-size:11px;color:#5b2d8e;font-weight:400">· no cuenta para presentismo</span>` : '';
 
         const headerRow = cerradoF
           ? `<button onclick="toggleAttGroup('${rowId}')"
               style="width:100%;display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;font-family:var(--font);padding:12px 18px">
               <svg id="${rowId}-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
-              <span style="flex:1;text-align:left;font-size:14px;font-weight:500;color:var(--navy)">${formatFecha(fecha)} <span style="font-size:11px;color:#7a4a10;font-weight:400">🔒 cerrado</span></span>
+              <span style="flex:1;text-align:left;font-size:14px;font-weight:500;color:var(--navy)">${formatFecha(fecha)} <span style="font-size:11px;color:#7a4a10;font-weight:400">🔒 cerrado</span>${soloControlBadge}</span>
               <span style="font-size:12px;color:var(--gray-400)">${pres}/${total} presentes</span>
             </button>`
           : `<div style="display:flex;align-items:center;gap:10px;padding:12px 18px">
-              <span style="flex:1;font-size:14px;font-weight:500;color:var(--navy)">${formatFecha(fecha)}</span>
+              <span style="flex:1;font-size:14px;font-weight:500;color:var(--navy)">${formatFecha(fecha)}${soloControlBadge}</span>
               <span style="font-size:12px;color:var(--gray-400)">${pres}/${total} presentes</span>
             </div>`;
 
@@ -8525,12 +8564,16 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
         <div style="font-size:13px;color:var(--gray-400);margin-bottom:1rem">
           No hay registro para el <strong style="color:var(--navy)">${formatFecha(nuevaFecha)}</strong>
         </div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:1rem">
+          <input type="checkbox" id="nuevo-registro-solo-control" style="width:15px;height:15px;cursor:pointer">
+          <label for="nuevo-registro-solo-control" style="font-size:12px;color:var(--gray-500);cursor:pointer">No cuenta para el presentismo del alumno</label>
+        </div>
         <div style="display:flex;gap:8px;justify-content:center">
-          <button onclick="iniciarRegistro('${selCom}','${nuevaFecha}','manual')"
+          <button onclick="iniciarRegistro('${selCom}','${nuevaFecha}','manual', document.getElementById('nuevo-registro-solo-control').checked)"
             style="width:200px;padding:10px 20px;font-size:13px;border-radius:var(--radius-md);border:none;cursor:pointer;font-family:var(--font);font-weight:500;background:#1a7a35;color:white">
             ✏️ Iniciar registro manual
           </button>
-          <button onclick="iniciarRegistro('${selCom}','${nuevaFecha}','qr')"
+          <button onclick="iniciarRegistro('${selCom}','${nuevaFecha}','qr', document.getElementById('nuevo-registro-solo-control').checked)"
             style="width:200px;padding:10px 20px;font-size:13px;border-radius:var(--radius-md);border:none;cursor:pointer;font-family:var(--font);font-weight:500;background:#1a7a35;color:white">
             📱 Generar QR
           </button>
@@ -8555,10 +8598,15 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
   `;
 }
 
-async function iniciarRegistro(comId, fecha, tipo) {
+async function iniciarRegistro(comId, fecha, tipo, soloControl) {
   if (!asistencia[comId]) asistencia[comId] = {};
   asistencia[comId][fecha] = {};
   const comision = COMISIONES.find(c => c.id === comId);
+
+  if (soloControl) {
+    asistencia[comId][fecha]._soloControl = true;
+    await guardarSoloControl(comId, fecha, true);
+  }
 
   if (tipo === 'qr') {
     // En modo QR nadie arranca presente — cada alumno se marca solo al escanear.
@@ -8629,6 +8677,28 @@ async function guardarEstadoCierre(comId, fecha, cerrado) {
   if (error) {
     console.warn('Error guardando cierre de asistencia:', error);
     asistencia[comId][fecha]._cerrado = anterior;
+    showToast('No se pudo guardar el cambio. Verificá tu conexión.', true);
+    return false;
+  }
+  return true;
+}
+
+// Marca una fecha como "solo control interno" — el docente la sigue viendo, pero no
+// cuenta para el presentismo del alumno (ni en su vista, ni en los cálculos, ni en
+// las columnas normales de las exportaciones). Se puede cambiar en cualquier momento,
+// no solo al crear el registro.
+async function guardarSoloControl(comId, fecha, soloControl) {
+  if (!asistencia[comId]) asistencia[comId] = {};
+  if (!asistencia[comId][fecha]) asistencia[comId][fecha] = {};
+  const anterior = asistencia[comId][fecha]._soloControl;
+  asistencia[comId][fecha]._soloControl = soloControl;
+  const { error } = await _supabase.from('config_sistema').upsert(
+    { clave: `asistencia_solocontrol_${comId}_${fecha}`, valor: { soloControl } },
+    { onConflict: 'clave' }
+  );
+  if (error) {
+    console.warn('Error guardando estado de solo control:', error);
+    asistencia[comId][fecha]._soloControl = anterior;
     showToast('No se pudo guardar el cambio. Verificá tu conexión.', true);
     return false;
   }
