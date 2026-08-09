@@ -6213,7 +6213,7 @@ async function confirmExportAsistenciaPdf() {
     const entry        = Object.entries(ENROLLED_STUDENTS).find(([,s]) => s.email === email);
     const doc          = entry?.[1]?.doc || '—';
     const fechaIngreso = getFechaIngresoComision(email, comId);
-    const fechasAlumno = fechasSel.filter(f => !fechaIngreso || f >= fechaIngreso);
+    const fechasAlumno = fechasSel.filter(f => (!fechaIngreso || f >= fechaIngreso) && !regs[f]?._soloControl);
     const presentes    = fechasAlumno.filter(f => regs[f]?.[email] === 'presente').length;
     const combinado     = getPresentismoCombinado(email, comId);
     const pct          = combinado.pct !== null ? combinado.pct + '%' : '—';
