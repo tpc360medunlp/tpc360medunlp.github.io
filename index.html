@@ -3043,7 +3043,10 @@ async function registrarAsistenciaPorToken(token) {
     showToast('No se encontró la comisión del código QR.', true);
     return;
   }
-  if (!comision.alumnos.includes(currentUser.email)) {
+  const rosterValido = comision.es_teorico_comun
+    ? getAlumnosTeoricoComun(comision.materiaId, comision.periodo||1, comision.año)
+    : comision.alumnos;
+  if (!rosterValido.includes(currentUser.email)) {
     showToast('No estás inscripto en esta comisión.', true);
     return;
   }
@@ -3877,6 +3880,76 @@ function renderStudentAttendanceView() {
       </div>`;
   });
 
+  // Teóricos comunes — tarjeta separada, para las materias donde el alumno está
+  // cursando y tienen un teórico común con toma de asistencia activa.
+  const teoricosDelAlumno = materiaIds
+    .map(materiaId => {
+      const comisionActual = misComisiones.find(c => c.materiaId === materiaId && c.alumnos.includes(email));
+      if (!comisionActual) return null;
+      const teorico = COMISIONES.find(c =>
+        c.materiaId === materiaId && c.año === selCiclo && (c.periodo||1) === (comisionActual.periodo||1) &&
+        c.es_teorico_comun && c.activo
+      );
+      return teorico ? { materiaId, teorico } : null;
+    })
+    .filter(Boolean);
+
+  if (teoricosDelAlumno.length > 0) {
+    html += `<div style="font-size:13px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.04em;margin:1.5rem 0 .75rem">🎓 Teóricos</div>`;
+
+    teoricosDelAlumno.forEach(({ materiaId, teorico }) => {
+      const materia = MATERIAS.find(m => m.id === materiaId);
+      const comId = `teorico-group-${materiaId}`;
+
+      const fechas = getFechasAlumnoEnComision(email, teorico.id);
+      const totalClases = fechas.length;
+      const presentes    = fechas.filter(f => asistencia[teorico.id]?.[f]?.[email] === 'presente').length;
+      const ausentes      = totalClases - presentes;
+      const pct        = totalClases > 0 ? Math.round(presentes / totalClases * 100) : null;
+      const pctColor   = pct === null ? 'var(--gray-400)' : pct >= 80 ? '#1a7a35' : pct >= 70 ? '#b05a10' : '#b02030';
+      const pctBg      = pct === null ? 'var(--gray-100)' : pct >= 80 ? 'var(--green-light)' : pct >= 70 ? 'var(--amber-light)' : 'var(--red-light)';
+
+      const filasHtml = fechas.length === 0
+        ? `<div style="padding:1rem;text-align:center;color:var(--gray-400);font-size:13px">Sin clases registradas aún.</div>`
+        : fechas.map(fecha => {
+            const estado = asistencia[teorico.id]?.[fecha]?.[email] || 'presente';
+            return `<div class="skill-row" style="align-items:center">
+              <span style="flex:1;font-size:13px;color:var(--gray-600)">${formatFecha(fecha)}</span>
+              <span class="badge ${estado === 'presente' ? 'badge-validated' : 'badge-rejected'}">
+                ${estado === 'presente' ? '✓ Presente' : '✗ Ausente'}
+              </span>
+            </div>`;
+          }).join('');
+
+      html += `
+        <div class="area-card" style="margin-bottom:.75rem">
+          <button onclick="toggleAttGroup('${comId}')"
+            style="width:100%;display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;font-family:var(--font);padding:0">
+            <div class="area-header" style="flex:1;margin:0">
+              <svg id="${comId}-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
+              <div style="flex:1;text-align:left;margin-left:6px">
+                <div style="font-size:14px;font-weight:500;color:var(--navy)">${materia?.nombre || 'Materia'}</div>
+                <div style="font-size:12px;color:var(--gray-400);margin-top:2px">Teórico común</div>
+              </div>
+              <div style="text-align:center;background:${pctBg};border-radius:var(--radius-md);padding:6px 12px;flex-shrink:0">
+                <div style="font-size:18px;font-weight:600;color:${pctColor}">${pct !== null ? pct+'%' : '—'}</div>
+                <div style="font-size:11px;color:${pctColor}">${pct !== null ? `${presentes}/${totalClases}` : 'sin clases'}</div>
+              </div>
+            </div>
+          </button>
+          <div id="${comId}" style="display:none">
+            <div style="padding:4px 0">${filasHtml}</div>
+            ${totalClases > 0 ? `
+              <div style="padding:10px 18px;border-top:1px solid var(--gray-100);display:flex;gap:16px">
+                <span style="font-size:12px;color:var(--gray-600)">Presentes: <strong>${presentes}</strong></span>
+                <span style="font-size:12px;color:var(--gray-600)">Ausentes: <strong>${ausentes}</strong></span>
+                ${pct !== null && pct < 70 ? `<span style="font-size:12px;color:#b02030;font-weight:500">⚠️ Asistencia insuficiente</span>` : ''}
+              </div>` : ''}
+          </div>
+        </div>`;
+    });
+  }
+
   document.getElementById('student-attendance-container').innerHTML = html;
   // Agregar nota CUdE si aplica
   const cude = getCudeAlumno(currentUser.email);
@@ -3985,7 +4058,7 @@ function buildConsolidadoGlobal(comId, alumnos, conPromocion) {
 
   // Parciales que tienen al menos una nota cargada en alguna comisión de la materia
   // en el MISMO período (para no mezclar 1er y 2do cuatrimestre en materias cuatrimestrales)
-  const comsMateria = COMISIONES.filter(c => c.materiaId === materiaId && c.año == año && (c.periodo||1) === periodo);
+  const comsMateria = COMISIONES.filter(c => c.materiaId === materiaId && c.año == año && (c.periodo||1) === periodo && !c.es_teorico_comun);
   const parcialesConNotas = NOMBRES_PARCIALES.filter(p =>
     comsMateria.some(com =>
       NOMBRES_FECHAS.some(f => {
@@ -4090,7 +4163,7 @@ function buildConsolidadoParcial(comId, parcial, alumnos, conPromocion) {
   // Pre-calcular fechasCargadas del parcial (una sola vez) — escopeado al mismo período
   // de esta comisión, para no mezclar 1er y 2do cuatrimestre
   const periodo = comision?.periodo || 1;
-  const comsMateria2 = COMISIONES.filter(c => c.materiaId === materiaId && c.año == año && (c.periodo||1) === periodo);
+  const comsMateria2 = COMISIONES.filter(c => c.materiaId === materiaId && c.año == año && (c.periodo||1) === periodo && !c.es_teorico_comun);
   const fechasCargadasParc = NOMBRES_FECHAS.filter(f =>
     comsMateria2.some(com => {
       const d = parciales[com.id]?.[parcial]?.[f];
@@ -6206,10 +6279,13 @@ async function confirmExportAsistenciaPdf() {
   const com     = COMISIONES.find(c => c.id === comId);
   const materia = MATERIAS.find(m => m.id === com?.materiaId);
   const regs    = asistencia[comId] || {};
-  const alumnos = sortStudentsByApellido(com?.alumnos || [], e => STUDENT_NAMES[e]||e);
+  const alumnosBase = com?.es_teorico_comun
+    ? getAlumnosTeoricoComun(com.materiaId, com.periodo||1, com.año)
+    : (com?.alumnos || []);
+  const alumnos = sortStudentsByApellido(alumnosBase, e => STUDENT_NAMES[e]||e);
 
   const titulo    = 'Registro de Asistencia';
-  const subtitulo = `${materia?.nombre||''} · ${com?.nombre||''} · Ciclo ${com?.año||''}`;
+  const subtitulo = `${materia?.nombre||''} · ${com?.es_teorico_comun ? '🎓 Teórico común' : com?.nombre||''} · Ciclo ${com?.año||''}`;
   const headers   = ['Apellido y Nombre', 'Documento', ...fechasSel.map(f => {
     const [y,m,d] = f.split('-');
     return `${d}/${m}/${y.slice(2)}`;
@@ -6652,7 +6728,7 @@ function buildCoordCalifStats() {
 
   // Comisiones filtradas
   const comisiones = COMISIONES.filter(c =>
-    c.año == selYear && (!selMateria || c.materiaId === selMateria)
+    c.año == selYear && (!selMateria || c.materiaId === selMateria) && !c.es_teorico_comun
   );
 
   if (comisiones.length === 0) {
@@ -7620,10 +7696,13 @@ function exportAsistencia(comId, fmt='xlsx') {
   const regs    = asistencia[comId] || {};
   const fechas  = Object.keys(regs).filter(f => !regs[f]?._soloControl).sort();
   const fechasControl = Object.keys(regs).filter(f => regs[f]?._soloControl).sort();
-  const alumnos = sortStudentsByApellido(com?.alumnos || [], e => STUDENT_NAMES[e]||e);
+  const alumnosBase = com?.es_teorico_comun
+    ? getAlumnosTeoricoComun(com.materiaId, com.periodo||1, com.año)
+    : (com?.alumnos || []);
+  const alumnos = sortStudentsByApellido(alumnosBase, e => STUDENT_NAMES[e]||e);
 
   const titulo    = 'Registro de Asistencia';
-  const subtitulo = `${materia?.nombre||''} · ${com?.nombre||''} · Ciclo ${com?.año||''}`;
+  const subtitulo = `${materia?.nombre||''} · ${com?.es_teorico_comun ? '🎓 Teórico común' : com?.nombre||''} · Ciclo ${com?.año||''}`;
   const headers   = ['Apellido y Nombre', 'Documento', ...fechas.map(f => {
     const [d,m,a] = formatFecha(f).split('/');
     return `${d}/${m}/${a.slice(2)}`; // dd/mm/aa
@@ -7724,7 +7803,7 @@ function exportConsolidadoParcial(comId, parcial, fmt='xlsx') {
   // Misma lógica que la vista en pantalla (docente/coordinación) — escopeado al mismo
   // período de esta comisión, para no mezclar 1er y 2do cuatrimestre
   const periodo = com?.periodo || 1;
-  const comsMateria = COMISIONES.filter(c => c.materiaId === materiaId && c.año == año && (c.periodo||1) === periodo);
+  const comsMateria = COMISIONES.filter(c => c.materiaId === materiaId && c.año == año && (c.periodo||1) === periodo && !c.es_teorico_comun);
   const todasFechasAgotadas = getFechasAgotadasPorParcial(comsMateria, [parcial])[parcial];
 
   const estadoLabels = {
@@ -7842,7 +7921,7 @@ function buildPadronFooterNote(alumnos, comId) {
 function exportEstadisticasCalif(fmt='xlsx') {
   const selYear    = window._coordCalifYear    || getCicloLectivoActual();
   const selMateria = window._coordCalifMateria || '';
-  const comisiones = COMISIONES.filter(c => c.año==selYear && (!selMateria||c.materiaId===selMateria));
+  const comisiones = COMISIONES.filter(c => c.año==selYear && (!selMateria||c.materiaId===selMateria) && !c.es_teorico_comun);
 
   const titulo    = 'Estadisticas y Consolidados de Calificaciones';
   const subtitulo = `Año ${selYear}${selMateria ? ' · '+MATERIAS.find(m=>m.id===selMateria)?.nombre : ' · Todas las materias'}`;
@@ -8003,7 +8082,7 @@ function exportResultadoGlobal(comId, fmt='xlsx') {
   // Parciales con notas en alguna comisión de la misma materia y período (para no
   // mezclar 1er y 2do cuatrimestre en materias cuatrimestrales)
   const periodo = com?.periodo || 1;
-  const comsMateria = COMISIONES.filter(c => c.materiaId === materiaId && c.año == año && (c.periodo||1) === periodo);
+  const comsMateria = COMISIONES.filter(c => c.materiaId === materiaId && c.año == año && (c.periodo||1) === periodo && !c.es_teorico_comun);
   const parcialesConNotas = NOMBRES_PARCIALES.filter(p =>
     comsMateria.some(com2 =>
       NOMBRES_FECHAS.some(f => {
@@ -8366,6 +8445,33 @@ function getTeacherComisiones() {
   return COMISIONES.filter(c => c.docenteDni === staffEntry[0] && ciclosActivos.includes(c.año));
 }
 
+// Variante usada solo en Asistencia — además de las comisiones propias, incluye los
+// teóricos comunes activos de las materias donde el docente tiene comisión (ese
+// período puntual) o es titular (todos los períodos), para que pueda tomarles
+// asistencia aunque no le pertenezcan a él en particular.
+function getTeacherComisionesConTeoricos() {
+  const propias = getTeacherComisiones();
+  const staffEntry = Object.entries(ENROLLED_STAFF).find(([dni, s]) =>
+    `${s.nombre} ${s.apellido}` === currentUser.name
+  );
+  if (!staffEntry) return propias;
+  const dni = staffEntry[0];
+  const ciclosActivos = getCiclosLectivosActivos();
+
+  // (materiaId, periodo) a los que este docente tiene acceso
+  const accesos = new Set(propias.map(c => `${c.materiaId}|${c.periodo||1}`));
+  MATERIAS.filter(m => m.docenteDni === dni).forEach(m => {
+    [1,2].forEach(p => accesos.add(`${m.id}|${p}`)); // titular: cualquier período
+  });
+
+  const teoricos = COMISIONES.filter(c =>
+    c.es_teorico_comun && c.activo && ciclosActivos.includes(c.año) &&
+    accesos.has(`${c.materiaId}|${c.periodo||1}`)
+  );
+
+  return [...propias, ...teoricos];
+}
+
 function getMateriaName(id) {
   return MATERIAS.find(m => m.id === id)?.nombre || id;
 }
@@ -8387,8 +8493,17 @@ function ordenarMateriasEstandar(materias) {
   });
 }
 
+// Roster del teórico común, calculado al vuelo (nunca guardado) — la unión de
+// alumnos de todas las comisiones reales del mismo período, materia y año.
+function getAlumnosTeoricoComun(materiaId, periodo, año) {
+  const comsDelPeriodo = COMISIONES.filter(c =>
+    c.materiaId === materiaId && c.año === año && (c.periodo||1) === periodo && !c.es_teorico_comun
+  );
+  return [...new Set(comsDelPeriodo.flatMap(c => c.alumnos || []))];
+}
+
 function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam) {
-  const comisiones = getTeacherComisiones();
+  const comisiones = getTeacherComisionesConTeoricos();
   if (comisiones.length === 0) {
     document.getElementById('attendance-container').innerHTML =
       `<div class="empty-state"><div class="empty-icon">📋</div><p>No tenés comisiones asignadas para el año en curso.</p></div>`;
@@ -8400,14 +8515,17 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
   const selMode = mode           || 'manual';
   const nuevaFecha = nuevaFechaParam || today;
   const comision = COMISIONES.find(c => c.id === selCom);
-  const alumnos = sortStudentsByApellido(comision?.alumnos || [], e => STUDENT_NAMES[e] || e);
+  const alumnosBase = comision?.es_teorico_comun
+    ? getAlumnosTeoricoComun(comision.materiaId, comision.periodo||1, comision.año)
+    : (comision?.alumnos || []);
+  const alumnos = sortStudentsByApellido(alumnosBase, e => STUDENT_NAMES[e] || e);
 
   // Comision selector
   let comHtml = comisiones.map(c =>
     `<button onclick="renderAttendanceView('${c.id}','${selDate}','${selMode}')"
       style="padding:8px 14px;font-size:13px;border-radius:var(--radius-md);border:none;cursor:pointer;font-family:var(--font);font-weight:500;
       background:${c.id===selCom?'var(--navy)':'var(--gray-100)'};color:${c.id===selCom?'white':'var(--gray-600)'}">
-      ${getMateriaName(c.materiaId)} · ${c.nombre}
+      ${getMateriaName(c.materiaId)} · ${c.es_teorico_comun ? '🎓 Teórico común' : c.nombre}
     </button>`).join('');
 
   const fechasRegistradas = Object.keys(asistencia[selCom] || {}).sort().reverse();
@@ -8599,7 +8717,7 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
   document.getElementById('attendance-container').innerHTML = `
     <div class="tcrono-tabs" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.25rem">${comHtml}</div>
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;flex-wrap:wrap">
-      <div style="flex:1;font-size:14px;font-weight:500;color:var(--navy)">${getMateriaName(comision.materiaId)} · ${comision.nombre}</div>
+      <div style="flex:1;font-size:14px;font-weight:500;color:var(--navy)">${getMateriaName(comision.materiaId)} · ${comision.es_teorico_comun ? '🎓 Teórico común' : comision.nombre}</div>
       <span id="attendance-saved-indicator" style="font-size:12px;font-weight:500;opacity:0;transition:opacity 0.3s;margin-right:4px"></span>
       <button onclick="exportAsistencia('${selCom}','xlsx')" title="Exportar Excel"
         style="padding:6px 12px;font-size:12px;border-radius:var(--radius-md);border:1.5px solid #1a7a35;background:white;color:#1a7a35;cursor:pointer;font-family:var(--font);font-weight:500">📊 Excel</button>
@@ -8629,8 +8747,11 @@ async function iniciarRegistro(comId, fecha, tipo, soloControl) {
   }
 
   // Modo manual: arranca con todos presentes, el docente desmarca los ausentes.
+  const rosterAlumnos = comision?.es_teorico_comun
+    ? getAlumnosTeoricoComun(comision.materiaId, comision.periodo||1, comision.año)
+    : (comision?.alumnos || []);
   const rows = [];
-  (comision?.alumnos || []).forEach(e => {
+  rosterAlumnos.forEach(e => {
     asistencia[comId][fecha][e] = 'presente';
     const legajo = getLegajoByEmail(e);
     if (legajo) rows.push({ comision_id: comId, fecha, legajo, estado: 'presente' });
@@ -8907,7 +9028,7 @@ function openQrModal(comId, date) {
   );
   const comision = COMISIONES.find(c => c.id === comId);
   document.getElementById('modal-qr-title').textContent =
-    `${getMateriaName(comision.materiaId)} · ${comision.nombre}`;
+    `${getMateriaName(comision.materiaId)} · ${comision.es_teorico_comun ? '🎓 Teórico común' : comision.nombre}`;
   document.getElementById('modal-qr-sub').textContent =
     `Fecha: ${date} · El código se renueva cada 30 segundos`;
   document.getElementById('qr-registered').textContent = qrRegistered.size;
@@ -9057,7 +9178,7 @@ function confirmDuplicarComisiones() {
 
 async function duplicarComisiones(incluirHorarios) {
   const añoAnterior = selectedAcademicYear - 1;
-  const comisionesAnteriores = COMISIONES.filter(c => c.año === añoAnterior);
+  const comisionesAnteriores = COMISIONES.filter(c => c.año === añoAnterior && !c.es_teorico_comun);
 
   if (comisionesAnteriores.length === 0) {
     showToast(`No hay comisiones del año ${añoAnterior} para duplicar.`, true);
@@ -9178,7 +9299,7 @@ function renderAcademicView(selectedMateriaId = null) {
     const rows = MATERIAS.length === 0
       ? `<div style="padding:2rem;text-align:center;color:var(--gray-400)">No hay materias cargadas.</div>`
       : ordenarMateriasEstandar(MATERIAS).map(m => {
-          const comCount = COMISIONES.filter(c => c.materiaId === m.id && c.año === selectedAcademicYear).length;
+          const comCount = COMISIONES.filter(c => c.materiaId === m.id && c.año === selectedAcademicYear && !c.es_teorico_comun).length;
           const staffEntry = Object.entries(ENROLLED_STAFF).find(([d]) => d === m.docenteDni);
           const docenteName = staffEntry ? `${staffEntry[1].apellido}, ${staffEntry[1].nombre}` : 'Sin asignar';
           const añoLabel    = m.añoCarrera ? `${m.añoCarrera}° año · ` : '';
@@ -9223,7 +9344,7 @@ function renderAcademicView(selectedMateriaId = null) {
 
   // Vista de comisiones de una materia filtradas por año
   const materia = MATERIAS.find(m => m.id === selectedMateriaId);
-  const comisiones = COMISIONES.filter(c => c.materiaId === selectedMateriaId && c.año === selectedAcademicYear)
+  const comisiones = COMISIONES.filter(c => c.materiaId === selectedMateriaId && c.año === selectedAcademicYear && !c.es_teorico_comun)
     .sort((a, b) => (a.nombre || '').localeCompare(b.nombre || '', 'es'));
 
   const rows = comisiones.length === 0
@@ -11154,12 +11275,12 @@ function cpEsAnterior(a, b) {
 }
 
 function getRecursantesActuales(materiaId, cpActual, todosCP) {
-  const comsEsteCp = COMISIONES.filter(c => c.materiaId === materiaId && c.año === cpActual.ciclo && (c.periodo||1) === cpActual.periodo);
+  const comsEsteCp = COMISIONES.filter(c => c.materiaId === materiaId && c.año === cpActual.ciclo && (c.periodo||1) === cpActual.periodo && !c.es_teorico_comun);
   const alumnosEsteCp = [...new Set(comsEsteCp.flatMap(c => c.alumnos || []))];
   if (alumnosEsteCp.length === 0) return 0;
   const anteriores = todosCP.filter(cp => cpEsAnterior(cp, cpActual));
   if (anteriores.length === 0) return 0;
-  const comsAnteriores = COMISIONES.filter(c => c.materiaId === materiaId &&
+  const comsAnteriores = COMISIONES.filter(c => c.materiaId === materiaId && !c.es_teorico_comun &&
     anteriores.some(cp => cp.ciclo === c.año && cp.periodo === (c.periodo||1)));
   const alumnosAnteriores = new Set(comsAnteriores.flatMap(c => c.alumnos || []));
   return alumnosEsteCp.filter(email => alumnosAnteriores.has(email)).length;
@@ -11169,7 +11290,7 @@ function getRecursantesActuales(materiaId, cpActual, todosCP) {
 // (desaprobado consolidado, fechas agotadas) al menos un parcial — candidatos a
 // recursar más adelante. Escopeado por período para no mezclar 1er y 2do cuatrimestre.
 function getRecursantesFuturos(materia, cp) {
-  const comsMat = COMISIONES.filter(c => c.materiaId === materia.id && c.año === cp.ciclo && (c.periodo||1) === cp.periodo);
+  const comsMat = COMISIONES.filter(c => c.materiaId === materia.id && c.año === cp.ciclo && (c.periodo||1) === cp.periodo && !c.es_teorico_comun);
   const alumnos = [...new Set(comsMat.flatMap(c => c.alumnos || []))];
   if (alumnos.length === 0) return 0;
 
@@ -11207,7 +11328,7 @@ function buildRecursantesView() {
 
   return materiasConDatos.map(materia => {
     // Todas las combinaciones (ciclo, período) que realmente existen para esta materia
-    const comsMateria = COMISIONES.filter(c => c.materiaId === materia.id);
+    const comsMateria = COMISIONES.filter(c => c.materiaId === materia.id && !c.es_teorico_comun);
     const clavesUnicas = [...new Set(comsMateria.map(c => `${c.año}|${c.periodo||1}`))];
     const todosCP = clavesUnicas
       .map(k => { const [ciclo, periodo] = k.split('|').map(Number); return { ciclo, periodo }; })
@@ -11572,7 +11693,7 @@ function buildFinalesStats(ciclo) {
 
       // Cruce cursada — cada alumno se clasifica mirando solo su período más reciente
       // (si recursa en el mismo ciclo, no arrastra resultados de un cuatrimestre anterior)
-      const comisiones = COMISIONES.filter(c => c.materiaId===materia.id && c.año==inicio);
+      const comisiones = COMISIONES.filter(c => c.materiaId===materia.id && c.año==inicio && !c.es_teorico_comun);
       const alumnosCursada = [...new Set(comisiones.flatMap(c => c.alumnos||[]))];
       const periodoMasRecientePorAlumno = {};
       alumnosCursada.forEach(email => {
@@ -11711,7 +11832,7 @@ function buildCortesTemporales(ciclo) {
   const PERIODO_LABEL_COHORTE = { 1: '1er cuatrimestre', 2: '2do cuatrimestre' };
 
   ordenarMateriasEstandar(MATERIAS).forEach(materia => {
-    const comsMateriaTotal = COMISIONES.filter(c => c.materiaId===materia.id && c.año==inicio);
+    const comsMateriaTotal = COMISIONES.filter(c => c.materiaId===materia.id && c.año==inicio && !c.es_teorico_comun);
     if (comsMateriaTotal.length === 0) return;
     const periodosMateria = [...new Set(comsMateriaTotal.map(c => c.periodo||1))].sort((a,b)=>a-b);
     const hayMultiplesPeriodos = periodosMateria.length > 1;
@@ -12308,7 +12429,8 @@ function updateCudeSolComisiones() {
   const otras = COMISIONES.filter(c =>
     c.materiaId === materiaId &&
     c.año === cicloActual &&
-    c.id !== comActual?.id
+    c.id !== comActual?.id &&
+    !c.es_teorico_comun
   );
 
   if (otras.length === 0) {
