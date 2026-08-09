@@ -1,0 +1,85 @@
+name: Backup Supabase
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install Supabase client
+        run: npm install @supabase/supabase-js
+
+      - name: Run backup
+        env:
+          SUPABASE_URL: https://dbrhpbhueiwednrkkelb.supabase.co
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          cat << 'EOF' > backup.js
+          const { createClient } = require('@supabase/supabase-js');
+          const fs = require('fs');
+
+          const supabase = createClient(
+            process.env.SUPABASE_URL,
+            process.env.SUPABASE_SERVICE_ROLE_KEY
+          );
+
+          const TABLAS = [
+            'materias', 'comisiones', 'comision_alumnos', 'alumnos', 'staff',
+            'asistencia', 'parciales', 'student_records', 'historial_cambios_comision',
+            'solicitudes_cert_finales', 'self_reported_finales', 'solicitudes_cambio_comision',
+            'periodos_cambio_comision', 'mesas_examen', 'mesas_resultados',
+            'config_sistema', 'cartelera_visitas', 'cartelera_publicaciones'
+          ];
+
+          async function backup() {
+            const fecha = new Date().toISOString().slice(0, 10);
+            const dir = `backups/${fecha}`;
+            fs.mkdirSync(dir, { recursive: true });
+
+            for (const tabla of TABLAS) {
+              const { data, error } = await supabase.from(tabla).select('*');
+              if (error) {
+                console.error(`Error en ${tabla}:`, error.message);
+                continue;
+              }
+              fs.writeFileSync(`${dir}/${tabla}.json`, JSON.stringify(data, null, 2));
+              console.log(`✅ ${tabla}: ${data.length} registros`);
+            }
+
+            const backups = fs.readdirSync('backups').sort();
+            while (backups.length > 30) {
+              const viejo = backups.shift();
+              fs.rmSync(`backups/${viejo}`, { recursive: true });
+              console.log(`🗑️ Eliminado backup antiguo: ${viejo}`);
+            }
+
+            console.log(`\n✅ Backup completado: ${fecha}`);
+          }
+
+          backup().catch(console.error);
+          EOF
+          node backup.js
+
+      - name: Commit backup
+        run: |
+          git config user.name "TPC360 Backup"
+          git config user.email "backup@tpc360.edu.ar"
+          git add backups/
+          git diff --staged --quiet || git commit -m "Backup $(date +%Y-%m-%d)"
+          git push
