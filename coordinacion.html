@@ -2896,6 +2896,10 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
     // Cargar datos de Supabase antes de mostrar el formulario
     await loadDataFromSupabase();
 
+    // Si mientras se cargaban los datos el usuario cerró sesión, no seguir —
+    // evita que este proceso, que ya estaba en marcha, lo vuelva a meter adentro.
+    if (window._justLoggedOut) { window._justLoggedOut = false; return; }
+
     // Si ya se verificó el documento antes en esta misma cuenta de Google y rol,
     // no volver a pedirlo en cada recarga — entrar directo.
     try {
@@ -3271,6 +3275,7 @@ async function enterApp() {
 
 function doLogout() {
   stopQrIntervalsIfRunning();
+  window._justLoggedOut = true;
   const rolAnterior = currentRole; // guardar antes de resetear
   localStorage.removeItem('tpc360_verified');
   ['student','teacher','coordinator'].forEach(r => sessionStorage.removeItem('tpc360_last_view_'+r));
