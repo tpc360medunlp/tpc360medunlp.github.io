@@ -1,0 +1,57 @@
+name: Generar páginas por rol
+
+on:
+  push:
+    paths:
+      - 'index.html'
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generar docente.html y coordinacion.html
+        run: |
+          python3 << 'EOF'
+          with open('index.html', 'r', encoding='utf-8') as f:
+              base = f.read()
+
+          # docente.html
+          docente = base \
+              .replace('<link rel="manifest" href="manifest.json">', '<link rel="manifest" href="manifest-docente.json">') \
+              .replace('<meta name="apple-mobile-web-app-title" content="TPC360">', '<meta name="apple-mobile-web-app-title" content="TPC360 Doc">') \
+              .replace('<title>TPC360 · Plataforma de Seguimiento Académico</title>', '<title>TPC360 · Docentes</title>') \
+              .replace("const _savedRoleAtStart = localStorage.getItem('tpc360_role');",
+                       "localStorage.setItem('tpc360_role','teacher');\nconst _savedRoleAtStart = 'teacher';")
+
+          with open('docente.html', 'w', encoding='utf-8') as f:
+              f.write(docente)
+
+          # coordinacion.html
+          coord = base \
+              .replace('<link rel="manifest" href="manifest.json">', '<link rel="manifest" href="manifest-coordinacion.json">') \
+              .replace('<meta name="apple-mobile-web-app-title" content="TPC360">', '<meta name="apple-mobile-web-app-title" content="TPC360 Coord">') \
+              .replace('<title>TPC360 · Plataforma de Seguimiento Académico</title>', '<title>TPC360 · Coordinación</title>') \
+              .replace("const _savedRoleAtStart = localStorage.getItem('tpc360_role');",
+                       "localStorage.setItem('tpc360_role','coordinator');\nconst _savedRoleAtStart = 'coordinator';")
+
+          with open('coordinacion.html', 'w', encoding='utf-8') as f:
+              f.write(coord)
+
+          print("docente.html y coordinacion.html generados correctamente")
+          EOF
+
+      - name: Commit y push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docente.html coordinacion.html
+          git diff --staged --quiet || git commit -m "Auto: regenerar docente.html y coordinacion.html"
+          git push
