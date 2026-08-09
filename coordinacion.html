@@ -6206,8 +6206,7 @@ async function confirmExportAsistenciaPdf() {
   const subtitulo = `${materia?.nombre||''} · ${com?.nombre||''} · Ciclo ${com?.año||''}`;
   const headers   = ['Apellido y Nombre', 'Documento', ...fechasSel.map(f => {
     const [y,m,d] = f.split('-');
-    const esControl = !!regs[f]?._soloControl;
-    return `${d}/${m}/${y.slice(2)}${esControl ? ' 🔸' : ''}`;
+    return `${d}/${m}/${y.slice(2)}`;
   }), 'Presentes', '% Total'];
 
   const rows = alumnos.map(email => {
@@ -8523,17 +8522,23 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
         const pres  = alumnosFecha.filter(e => registro[e] === 'presente').length;
         const rowId = 'att-row-' + fecha.replace(/-/g, '');
         const soloControlBadge = registro._soloControl
-          ? ` <span style="font-size:11px;color:#5b2d8e;font-weight:400">· no cuenta para presentismo</span>` : '';
+          ? `<div style="font-size:11px;color:#5b2d8e;font-weight:400;margin-top:2px">No cuenta para presentismo</div>` : '';
 
         const headerRow = cerradoF
           ? `<button onclick="toggleAttGroup('${rowId}')"
               style="width:100%;display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;font-family:var(--font);padding:12px 18px">
               <svg id="${rowId}-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
-              <span style="flex:1;text-align:left;font-size:14px;font-weight:500;color:var(--navy)">${formatFecha(fecha)} <span style="font-size:11px;color:#7a4a10;font-weight:400">🔒 cerrado</span>${soloControlBadge}</span>
+              <span style="flex:1;text-align:left">
+                <span style="font-size:14px;font-weight:500;color:var(--navy)">${formatFecha(fecha)} <span style="font-size:11px;color:#7a4a10;font-weight:400">🔒 cerrado</span></span>
+                ${soloControlBadge}
+              </span>
               <span style="font-size:12px;color:var(--gray-400)">${pres}/${total} presentes</span>
             </button>`
           : `<div style="display:flex;align-items:center;gap:10px;padding:12px 18px">
-              <span style="flex:1;font-size:14px;font-weight:500;color:var(--navy)">${formatFecha(fecha)}${soloControlBadge}</span>
+              <span style="flex:1">
+                <span style="font-size:14px;font-weight:500;color:var(--navy)">${formatFecha(fecha)}</span>
+                ${soloControlBadge}
+              </span>
               <span style="font-size:12px;color:var(--gray-400)">${pres}/${total} presentes</span>
             </div>`;
 
