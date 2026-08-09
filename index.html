@@ -3856,7 +3856,7 @@ function renderStudentAttendanceView() {
           <div class="area-header" style="flex:1;margin:0">
             <svg id="${comId}-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
             <div style="flex:1;text-align:left;margin-left:6px">
-              <div style="font-size:14px;font-weight:500;color:var(--navy)">${materia?.nombre || 'Materia'}</div>
+              <div style="font-size:14px;font-weight:500;color:var(--navy)">${materia?.nombre || 'Materia'} 🔬</div>
               <div style="font-size:12px;color:var(--gray-400);margin-top:2px">
                 Docente: ${docenteName}
                 ${huboCambio ? `<span style="color:#854F0B;margin-left:8px">· Incluye clases de tu/s comisión/es anterior/es</span>` : ''}
@@ -3914,7 +3914,7 @@ function renderStudentAttendanceView() {
             <div class="area-header" style="flex:1;margin:0">
               <svg id="${comIdT}-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
               <div style="flex:1;text-align:left;margin-left:6px">
-                <div style="font-size:14px;font-weight:500;color:var(--navy)">🎓 ${materia?.nombre || 'Materia'}</div>
+                <div style="font-size:14px;font-weight:500;color:var(--navy)">${materia?.nombre || 'Materia'} 📖</div>
                 <div style="font-size:12px;color:var(--gray-400);margin-top:2px">Teórico común</div>
               </div>
               <div style="text-align:center;background:${pctBgT};border-radius:var(--radius-md);padding:6px 12px;flex-shrink:0">
@@ -6271,7 +6271,7 @@ async function confirmExportAsistenciaPdf() {
   const alumnos = sortStudentsByApellido(alumnosBase, e => STUDENT_NAMES[e]||e);
 
   const titulo    = 'Registro de Asistencia';
-  const subtitulo = `${materia?.nombre||''} · ${com?.es_teorico_comun ? '🎓 Teórico común' : com?.nombre||''} · Ciclo ${com?.año||''}`;
+  const subtitulo = `${materia?.nombre||''} · ${com?.es_teorico_comun ? '📖 Teórico común' : com?.nombre||''} · Ciclo ${com?.año||''}`;
   const headers   = ['Apellido y Nombre', 'Documento', ...fechasSel.map(f => {
     const [y,m,d] = f.split('-');
     return `${d}/${m}/${y.slice(2)}`;
@@ -7688,7 +7688,7 @@ function exportAsistencia(comId, fmt='xlsx') {
   const alumnos = sortStudentsByApellido(alumnosBase, e => STUDENT_NAMES[e]||e);
 
   const titulo    = 'Registro de Asistencia';
-  const subtitulo = `${materia?.nombre||''} · ${com?.es_teorico_comun ? '🎓 Teórico común' : com?.nombre||''} · Ciclo ${com?.año||''}`;
+  const subtitulo = `${materia?.nombre||''} · ${com?.es_teorico_comun ? '📖 Teórico común' : com?.nombre||''} · Ciclo ${com?.año||''}`;
   const headers   = ['Apellido y Nombre', 'Documento', ...fechas.map(f => {
     const [d,m,a] = formatFecha(f).split('/');
     return `${d}/${m}/${a.slice(2)}`; // dd/mm/aa
@@ -8511,7 +8511,7 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
     `<button onclick="renderAttendanceView('${c.id}','${selDate}','${selMode}')"
       style="padding:8px 14px;font-size:13px;border-radius:var(--radius-md);border:none;cursor:pointer;font-family:var(--font);font-weight:500;
       background:${c.id===selCom?'var(--navy)':'var(--gray-100)'};color:${c.id===selCom?'white':'var(--gray-600)'}">
-      ${getMateriaName(c.materiaId)} · ${c.es_teorico_comun ? '🎓 Teórico común' : c.nombre}
+      ${getMateriaName(c.materiaId)} · ${c.es_teorico_comun ? '📖 Teórico común' : c.nombre}
     </button>`).join('');
 
   const fechasRegistradas = Object.keys(asistencia[selCom] || {}).sort().reverse();
@@ -8703,7 +8703,7 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
   document.getElementById('attendance-container').innerHTML = `
     <div class="tcrono-tabs" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.25rem">${comHtml}</div>
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;flex-wrap:wrap">
-      <div style="flex:1;font-size:14px;font-weight:500;color:var(--navy)">${getMateriaName(comision.materiaId)} · ${comision.es_teorico_comun ? '🎓 Teórico común' : comision.nombre}</div>
+      <div style="flex:1;font-size:14px;font-weight:500;color:var(--navy)">${getMateriaName(comision.materiaId)} · ${comision.es_teorico_comun ? '📖 Teórico común' : comision.nombre}</div>
       <span id="attendance-saved-indicator" style="font-size:12px;font-weight:500;opacity:0;transition:opacity 0.3s;margin-right:4px"></span>
       <button onclick="exportAsistencia('${selCom}','xlsx')" title="Exportar Excel"
         style="padding:6px 12px;font-size:12px;border-radius:var(--radius-md);border:1.5px solid #1a7a35;background:white;color:#1a7a35;cursor:pointer;font-family:var(--font);font-weight:500">📊 Excel</button>
@@ -9014,7 +9014,7 @@ function openQrModal(comId, date) {
   );
   const comision = COMISIONES.find(c => c.id === comId);
   document.getElementById('modal-qr-title').textContent =
-    `${getMateriaName(comision.materiaId)} · ${comision.es_teorico_comun ? '🎓 Teórico común' : comision.nombre}`;
+    `${getMateriaName(comision.materiaId)} · ${comision.es_teorico_comun ? '📖 Teórico común' : comision.nombre}`;
   document.getElementById('modal-qr-sub').textContent =
     `Fecha: ${date} · El código se renueva cada 30 segundos`;
   document.getElementById('qr-registered').textContent = qrRegistered.size;
