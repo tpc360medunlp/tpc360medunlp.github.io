@@ -1,0 +1,85 @@
+[
+  {
+    "dni": "42455146",
+    "nombre": "Aylen",
+    "apellido": "Burgos",
+    "email": "aburgos@med.unlp.edu.ar",
+    "roles": [
+      "teacher"
+    ],
+    "role_label": "Docente",
+    "cargo": "Ayudante Diplomado rentado",
+    "activo": true,
+    "created_at": "2026-07-22T01:08:04.298426+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "dni": "18549214",
+    "nombre": "Carlos",
+    "apellido": "Martinez",
+    "email": "milochodoce3@gmail.com",
+    "roles": [
+      "teacher"
+    ],
+    "role_label": "Docente",
+    "cargo": "JTP",
+    "activo": true,
+    "created_at": "2026-07-22T00:04:12.156028+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "dni": "32527404",
+    "nombre": "Franco",
+    "apellido": "Parola",
+    "email": "fparola@med.unlp.edu.ar",
+    "roles": [
+      "teacher",
+      "coordinator"
+    ],
+    "role_label": "Coordinación",
+    "cargo": "Ayudante Diplomado rentado",
+    "activo": true,
+    "created_at": "2026-07-20T23:58:33.747416+00:00",
+    "novedades_vistas": {
+      "certCount": 0,
+      "aulasStatus": {
+        "sa_1785550338850": "{\"estado\":\"confirmada\",\"aulas\":[\"aula a\"]}",
+        "sa_1785555682168": "{\"estado\":\"confirmada\",\"aulas\":[\"698\"]}"
+      },
+      "pendingCount": 1
+    }
+  },
+  {
+    "dni": "28769839",
+    "nombre": "Fernando",
+    "apellido": "Mayo",
+    "email": "fmayo@med.unlp.edu.ar",
+    "roles": [
+      "teacher"
+    ],
+    "role_label": "Docente",
+    "cargo": "Ayudante Diplomado rentado",
+    "activo": true,
+    "created_at": "2026-07-22T00:56:55.521545+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "dni": "44674650",
+    "nombre": "Ana Camila",
+    "apellido": "Sanchez Castro",
+    "email": "asanchezcastro@med.unlp.edu.ar",
+    "roles": [
+      "teacher",
+      "coordinator"
+    ],
+    "role_label": "Coordinación",
+    "cargo": "Nodocente",
+    "activo": true,
+    "created_at": "2026-08-03T18:19:04.329649+00:00",
+    "novedades_vistas": {
+      "certCount": 0,
+      "aulasStatus": {},
+      "pendingCount": 0
+    }
+  }
+]
