@@ -2966,6 +2966,7 @@ async function cambiarCuentaGoogle() {
   // Guardar el rol actual antes de redirigir
   localStorage.setItem('tpc360_role', currentRole || 'student');
   localStorage.removeItem('tpc360_verified');
+  ['student','teacher','coordinator'].forEach(r => sessionStorage.removeItem('tpc360_last_view_'+r));
   await _supabase.auth.signOut();
   googleEmail = '';
   document.getElementById('login-step1').style.display = 'block';
@@ -2998,6 +2999,7 @@ async function iniciarLoginGoogle() {
 
 async function doLogoutSupabase() {
   localStorage.removeItem('tpc360_verified');
+  ['student','teacher','coordinator'].forEach(r => sessionStorage.removeItem('tpc360_last_view_'+r));
   await _supabase.auth.signOut();
 }
 
@@ -3220,8 +3222,12 @@ async function enterApp() {
     renderSidebar(); if(window.innerWidth<=768) { renderMobileNav(); renderMobileHeader(); }
 
     if (currentRole === 'student') {
-      const firstGroup = getOrderedStudentGroups().find(g => g.enabled);
-      switchStudentView(firstGroup?.view || 'student');
+      const enabledGroups = getOrderedStudentGroups().filter(g => g.enabled);
+      const lastView = sessionStorage.getItem('tpc360_last_view_student');
+      const targetView = (lastView && enabledGroups.some(g => g.view === lastView))
+        ? lastView
+        : (enabledGroups[0]?.view || 'student');
+      switchStudentView(targetView);
       setTimeout(() => {
         showInAppNotifications(currentUser.email);
         window._notifShown = true;
@@ -3231,14 +3237,19 @@ async function enterApp() {
       procesarTokenQrSiExiste();
     }
     else if (currentRole === 'teacher') {
-      const firstGroup = getOrderedTeacherGroups().find(g => g.enabled);
-      switchTeacherView(firstGroup?.view || 'teacher');
+      const enabledGroups = getOrderedTeacherGroups().filter(g => g.enabled);
+      const lastView = sessionStorage.getItem('tpc360_last_view_teacher');
+      const targetView = (lastView && enabledGroups.some(g => g.view === lastView))
+        ? lastView
+        : (enabledGroups[0]?.view || 'teacher');
+      switchTeacherView(targetView);
       setTimeout(() => showTeacherNotifications(getTeacherDni()), 600);
       actualizarBadgeAulas();
       actualizarBadgeCronogramaTeacher();
     }
     else {
-      switchCoordView('stats');
+      const lastSection = sessionStorage.getItem('tpc360_last_view_coordinator');
+      switchCoordView(lastSection && document.getElementById('view-coord-' + lastSection) ? lastSection : 'stats');
       actualizarBadgeMesasFinales();
       actualizarBadgeCude();
       actualizarBadgeAulas();
@@ -3262,6 +3273,7 @@ function doLogout() {
   stopQrIntervalsIfRunning();
   const rolAnterior = currentRole; // guardar antes de resetear
   localStorage.removeItem('tpc360_verified');
+  ['student','teacher','coordinator'].forEach(r => sessionStorage.removeItem('tpc360_last_view_'+r));
   _supabase.auth.signOut(); // cerrar sesión en Supabase
   googleEmail          = '';
   currentUser          = null;
@@ -3647,6 +3659,7 @@ function switchCoordView(section) {
     console.error('Vista de coordinación inexistente:', section);
     return;
   }
+  sessionStorage.setItem('tpc360_last_view_coordinator', section);
   document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   viewEl.classList.add('active');
@@ -3680,6 +3693,7 @@ function switchStudentView(view) {
     console.error('Vista de estudiante inexistente:', view);
     return;
   }
+  sessionStorage.setItem('tpc360_last_view_student', view);
   document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   viewEl.classList.add('active');
@@ -5265,6 +5279,7 @@ function renderStudentNotasView() {
 
 function switchTeacherView(view) {
   stopQrIntervalsIfRunning();
+  sessionStorage.setItem('tpc360_last_view_teacher', view);
   document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('view-' + view).classList.add('active');
