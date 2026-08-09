@@ -4459,9 +4459,7 @@ function _renderNotasViewInternal(selectedComId, selectedParcial, selectedFecha)
               </div>`
           }
           <button onclick="confirmarEliminarRegistroNotas('${selCom}','${selParc}','${selFecha}')" title="Eliminar registro"
-            style="padding:5px 9px;font-size:12px;border-radius:var(--radius-md);border:1px solid var(--gray-200);background:white;color:var(--gray-500);cursor:pointer;font-family:var(--font)">
-            🗑️
-          </button>
+            style="padding:5px 9px;font-size:12px;border-radius:var(--radius-md);border:1px solid #f5b8be;background:var(--red-light);color:#b02030;cursor:pointer;font-family:var(--font)">🗑</button>
         </div>
       </div>
       ${alumnosHabilitados.length === 0
@@ -8762,7 +8760,7 @@ function confirmarEliminarRegistroNotas(comId, parcial, fecha) {
   deleteNotasComId = comId;
   deleteNotasParcial = parcial;
   deleteNotasFecha = fecha;
-  document.getElementById('delete-registro-notas-detalle').textContent = `${parcial} · ${formatFecha(fecha)}`;
+  document.getElementById('delete-registro-notas-detalle').textContent = `${parcial} · ${fecha}`;
   document.getElementById('modal-delete-registro-notas').classList.add('open');
 }
 function closeDeleteRegistroNotasModal() {
