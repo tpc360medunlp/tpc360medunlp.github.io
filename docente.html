@@ -8489,6 +8489,27 @@ function getAlumnosTeoricoComun(materiaId, periodo, año) {
   return [...new Set(comsDelPeriodo.flatMap(c => c.alumnos || []))];
 }
 
+// Para el teórico común: a qué comisión real pertenece cada alumno (para mostrarlo
+// como aclaración), y el orden de alumnos agrupados por comisión (alfabético por
+// nombre de comisión) y alfabético por apellido dentro de cada una.
+function getComisionesPorAlumnoTeorico(materiaId, periodo, año) {
+  const comsDelPeriodo = COMISIONES.filter(c =>
+    c.materiaId === materiaId && c.año === año && (c.periodo||1) === periodo && !c.es_teorico_comun
+  ).sort((a,b) => (a.nombre||'').localeCompare(b.nombre||'', 'es'));
+
+  const comisionPorEmail = {};
+  const ordenados = [];
+  comsDelPeriodo.forEach(com => {
+    const alumnosDeEstaCom = sortStudentsByApellido(com.alumnos || [], e => STUDENT_NAMES[e] || e);
+    alumnosDeEstaCom.forEach(email => {
+      if (comisionPorEmail[email] !== undefined) return; // ya asignado a otra comisión, no duplicar
+      comisionPorEmail[email] = com.nombre;
+      ordenados.push(email);
+    });
+  });
+  return { comisionPorEmail, ordenados };
+}
+
 function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam) {
   const comisiones = getTeacherComisionesConTeoricos();
   if (comisiones.length === 0) {
@@ -8502,10 +8523,15 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
   const selMode = mode           || 'manual';
   const nuevaFecha = nuevaFechaParam || today;
   const comision = COMISIONES.find(c => c.id === selCom);
-  const alumnosBase = comision?.es_teorico_comun
-    ? getAlumnosTeoricoComun(comision.materiaId, comision.periodo||1, comision.año)
-    : (comision?.alumnos || []);
-  const alumnos = sortStudentsByApellido(alumnosBase, e => STUDENT_NAMES[e] || e);
+  let comisionPorEmailTeorico = null;
+  let alumnos;
+  if (comision?.es_teorico_comun) {
+    const { comisionPorEmail, ordenados } = getComisionesPorAlumnoTeorico(comision.materiaId, comision.periodo||1, comision.año);
+    comisionPorEmailTeorico = comisionPorEmail;
+    alumnos = ordenados;
+  } else {
+    alumnos = sortStudentsByApellido(comision?.alumnos || [], e => STUDENT_NAMES[e] || e);
+  }
 
   // Comision selector
   let comHtml = comisiones.map(c =>
@@ -8525,7 +8551,8 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
     const { totalClases, presentes, pct } = getPresentismoCombinado(email, selCom);
     let origen = null;
     try { origen = getComisionOrigenNombre(email, selCom); } catch(e) { origen = null; }
-    return { email, nombre: STUDENT_NAMES[email] || email, totalClases, presentes, pct, origen };
+    const comisionTeorico = comisionPorEmailTeorico ? comisionPorEmailTeorico[email] : null;
+    return { email, nombre: STUDENT_NAMES[email] || email, totalClases, presentes, pct, origen, comisionTeorico };
   });
 
   const resumenPresentismoHtml = resumenPresentismo.length === 0 ? '' : `
@@ -8544,6 +8571,7 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
           return `<div class="skill-row" style="align-items:center">
             <div style="flex:1">
               <span style="font-size:13px;color:var(--navy)">${r.nombre}${getCudeBadge(r.email)}</span>
+              ${r.comisionTeorico ? `<div style="font-size:11px;color:var(--gray-400)">${r.comisionTeorico}</div>` : ''}
               ${r.origen ? `<div style="font-size:11px;color:#854F0B">(Proviene de ${r.origen})</div>` : ''}
             </div>
             <span style="font-size:11px;color:var(--gray-400);margin-right:10px">${r.totalClases>0 ? r.presentes+'/'+r.totalClases+' clases' : 'Sin clases registradas'}</span>
@@ -8562,10 +8590,12 @@ function renderAttendanceView(selectedComId, selectedDate, mode, nuevaFechaParam
           const initials = getApellido(nombre).slice(0,2).toUpperCase();
           const estado = registro[email] || 'ausente';
           const origen = (() => { try { return getComisionOrigenNombre(email, selCom); } catch(e) { return null; } })();
+          const comisionTeorico = comisionPorEmailTeorico ? comisionPorEmailTeorico[email] : null;
           return `<div class="skill-row" style="align-items:center">
             <div class="student-ava">${initials}</div>
             <div style="flex:1">
               <div style="font-size:14px;color:var(--navy)">${nombre}${getCudeBadge(email)}</div>
+              ${comisionTeorico ? `<div style="font-size:11px;color:var(--gray-400)">${comisionTeorico}</div>` : ''}
               ${origen ? `<div style="font-size:11px;color:#854F0B">(Proviene de ${origen})</div>` : ''}
             </div>
             ${cerradoF ? `
