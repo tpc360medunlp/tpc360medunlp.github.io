@@ -3879,40 +3879,26 @@ function renderStudentAttendanceView() {
             </div>` : ''}
         </div>
       </div>`;
-  });
 
-  // Teóricos comunes — tarjeta separada, para las materias donde el alumno está
-  // cursando y tienen un teórico común con toma de asistencia activa.
-  const teoricosDelAlumno = materiaIds
-    .map(materiaId => {
-      const comisionActual = misComisiones.find(c => c.materiaId === materiaId && c.alumnos.includes(email));
-      if (!comisionActual) return null;
-      const teorico = COMISIONES.find(c =>
-        c.materiaId === materiaId && c.año === selCiclo && (c.periodo||1) === (comisionActual.periodo||1) &&
-        c.es_teorico_comun && c.activo
-      );
-      return teorico ? { materiaId, teorico } : null;
-    })
-    .filter(Boolean);
+    // Teórico común de esta misma materia (si tiene uno activo) — se muestra
+    // justo debajo del práctico, agrupado por materia.
+    const teorico = COMISIONES.find(c =>
+      c.materiaId === materiaId && c.año === selCiclo && (c.periodo||1) === (comisionActual.periodo||1) &&
+      c.es_teorico_comun && c.activo
+    );
+    if (teorico) {
+      const comIdT = `teorico-group-${materiaId}`;
+      const fechasT = getFechasAlumnoEnComision(email, teorico.id);
+      const totalClasesT = fechasT.length;
+      const presentesT    = fechasT.filter(f => asistencia[teorico.id]?.[f]?.[email] === 'presente').length;
+      const ausentesT      = totalClasesT - presentesT;
+      const pctT        = totalClasesT > 0 ? Math.round(presentesT / totalClasesT * 100) : null;
+      const pctColorT   = pctT === null ? 'var(--gray-400)' : pctT >= 80 ? '#1a7a35' : pctT >= 70 ? '#b05a10' : '#b02030';
+      const pctBgT      = pctT === null ? 'var(--gray-100)' : pctT >= 80 ? 'var(--green-light)' : pctT >= 70 ? 'var(--amber-light)' : 'var(--red-light)';
 
-  if (teoricosDelAlumno.length > 0) {
-    html += `<div style="font-size:13px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.04em;margin:1.5rem 0 .75rem">🎓 Teóricos</div>`;
-
-    teoricosDelAlumno.forEach(({ materiaId, teorico }) => {
-      const materia = MATERIAS.find(m => m.id === materiaId);
-      const comId = `teorico-group-${materiaId}`;
-
-      const fechas = getFechasAlumnoEnComision(email, teorico.id);
-      const totalClases = fechas.length;
-      const presentes    = fechas.filter(f => asistencia[teorico.id]?.[f]?.[email] === 'presente').length;
-      const ausentes      = totalClases - presentes;
-      const pct        = totalClases > 0 ? Math.round(presentes / totalClases * 100) : null;
-      const pctColor   = pct === null ? 'var(--gray-400)' : pct >= 80 ? '#1a7a35' : pct >= 70 ? '#b05a10' : '#b02030';
-      const pctBg      = pct === null ? 'var(--gray-100)' : pct >= 80 ? 'var(--green-light)' : pct >= 70 ? 'var(--amber-light)' : 'var(--red-light)';
-
-      const filasHtml = fechas.length === 0
+      const filasHtmlT = fechasT.length === 0
         ? `<div style="padding:1rem;text-align:center;color:var(--gray-400);font-size:13px">Sin clases registradas aún.</div>`
-        : fechas.map(fecha => {
+        : fechasT.map(fecha => {
             const estado = asistencia[teorico.id]?.[fecha]?.[email] || 'presente';
             return `<div class="skill-row" style="align-items:center">
               <span style="flex:1;font-size:13px;color:var(--gray-600)">${formatFecha(fecha)}</span>
@@ -3924,32 +3910,32 @@ function renderStudentAttendanceView() {
 
       html += `
         <div class="area-card" style="margin-bottom:.75rem">
-          <button onclick="toggleAttGroup('${comId}')"
+          <button onclick="toggleAttGroup('${comIdT}')"
             style="width:100%;display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;font-family:var(--font);padding:0">
             <div class="area-header" style="flex:1;margin:0">
-              <svg id="${comId}-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
+              <svg id="${comIdT}-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
               <div style="flex:1;text-align:left;margin-left:6px">
-                <div style="font-size:14px;font-weight:500;color:var(--navy)">${materia?.nombre || 'Materia'}</div>
+                <div style="font-size:14px;font-weight:500;color:var(--navy)">🎓 ${materia?.nombre || 'Materia'}</div>
                 <div style="font-size:12px;color:var(--gray-400);margin-top:2px">Teórico común</div>
               </div>
-              <div style="text-align:center;background:${pctBg};border-radius:var(--radius-md);padding:6px 12px;flex-shrink:0">
-                <div style="font-size:18px;font-weight:600;color:${pctColor}">${pct !== null ? pct+'%' : '—'}</div>
-                <div style="font-size:11px;color:${pctColor}">${pct !== null ? `${presentes}/${totalClases}` : 'sin clases'}</div>
+              <div style="text-align:center;background:${pctBgT};border-radius:var(--radius-md);padding:6px 12px;flex-shrink:0">
+                <div style="font-size:18px;font-weight:600;color:${pctColorT}">${pctT !== null ? pctT+'%' : '—'}</div>
+                <div style="font-size:11px;color:${pctColorT}">${pctT !== null ? `${presentesT}/${totalClasesT}` : 'sin clases'}</div>
               </div>
             </div>
           </button>
-          <div id="${comId}" style="display:none">
-            <div style="padding:4px 0">${filasHtml}</div>
-            ${totalClases > 0 ? `
+          <div id="${comIdT}" style="display:none">
+            <div style="padding:4px 0">${filasHtmlT}</div>
+            ${totalClasesT > 0 ? `
               <div style="padding:10px 18px;border-top:1px solid var(--gray-100);display:flex;gap:16px">
-                <span style="font-size:12px;color:var(--gray-600)">Presentes: <strong>${presentes}</strong></span>
-                <span style="font-size:12px;color:var(--gray-600)">Ausentes: <strong>${ausentes}</strong></span>
-                ${pct !== null && pct < 70 ? `<span style="font-size:12px;color:#b02030;font-weight:500">⚠️ Asistencia insuficiente</span>` : ''}
+                <span style="font-size:12px;color:var(--gray-600)">Presentes: <strong>${presentesT}</strong></span>
+                <span style="font-size:12px;color:var(--gray-600)">Ausentes: <strong>${ausentesT}</strong></span>
+                ${pctT !== null && pctT < 70 ? `<span style="font-size:12px;color:#b02030;font-weight:500">⚠️ Asistencia insuficiente</span>` : ''}
               </div>` : ''}
           </div>
         </div>`;
-    });
-  }
+    }
+  });
 
   document.getElementById('student-attendance-container').innerHTML = html;
   // Agregar nota CUdE si aplica
