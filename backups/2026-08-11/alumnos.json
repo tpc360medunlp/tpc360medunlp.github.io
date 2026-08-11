@@ -1,0 +1,1581 @@
+[
+  {
+    "legajo": "68840/3",
+    "nombre": "Karina Luján",
+    "apellido": "Aguirre",
+    "email": "aguirrek513@gmail.com",
+    "legajo_completo": "068840/3",
+    "dni": "45605706",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "59811/6",
+    "nombre": "Maricel Veronica",
+    "apellido": "Amendola",
+    "email": "maricel.v.amendola@gmail.com",
+    "legajo_completo": "59811/6",
+    "dni": "45396444",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "59421/5",
+    "nombre": "Milagro",
+    "apellido": "Caceres",
+    "email": "lucaymilujuntos7@gmail.com",
+    "legajo_completo": "59421/5",
+    "dni": "42825860",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63391/6",
+    "nombre": "AYELEN",
+    "apellido": "CAMPOS SALAZAR",
+    "email": "ayelen.campos.s@gmail.com",
+    "legajo_completo": "63391/6",
+    "dni": "38468943",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "57276/6",
+    "nombre": "Milagros soledad",
+    "apellido": "Carranza",
+    "email": "carranzasol556@gmail.com",
+    "legajo_completo": "57276/6",
+    "dni": "44432552",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "58678/6",
+    "nombre": "Denise Ayelén",
+    "apellido": "Di Nezio",
+    "email": "dineziodenise@gmail.com",
+    "legajo_completo": "58678/6",
+    "dni": "45578671",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66383/9",
+    "nombre": "Nicole Micaela",
+    "apellido": "Enriquez",
+    "email": "nicole.-micaela@hotmail.com",
+    "legajo_completo": "66383/9",
+    "dni": "41235233",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "48918/7",
+    "nombre": "Marlene Emilce",
+    "apellido": "Esnarriaga",
+    "email": "marleneemilce@gmail.com",
+    "legajo_completo": "48918/7",
+    "dni": "43302880",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68953/1",
+    "nombre": "Juan Francisco",
+    "apellido": "Espinel",
+    "email": "jfranciscoespinel@gmail.com",
+    "legajo_completo": "068953/1",
+    "dni": "41999495",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68957/6",
+    "nombre": "Malena",
+    "apellido": "Estrada",
+    "email": "estradamalena@gmail.com",
+    "legajo_completo": "068957/6",
+    "dni": "27214256",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68987/2",
+    "nombre": "Barbara Carolina",
+    "apellido": "Gomez",
+    "email": "barbigomez06@gmail.com",
+    "legajo_completo": "068987/2",
+    "dni": "47408224",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66431/0",
+    "nombre": "Rocío",
+    "apellido": "Heredia",
+    "email": "roheredia08@gmail.com",
+    "legajo_completo": "66431/0",
+    "dni": "37803283",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66451/4",
+    "nombre": "Romanela Rocio",
+    "apellido": "Lazarte Weiss",
+    "email": "romanelalw@gmail.com",
+    "legajo_completo": "66451/4",
+    "dni": "45038641",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "55122/9",
+    "nombre": "Patricia Lorena",
+    "apellido": "Maciel",
+    "email": "lorenamacielban@gmail.com",
+    "legajo_completo": "55122/9",
+    "dni": "26610219",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "58489/3",
+    "nombre": "Camila Ayelen",
+    "apellido": "Mansilla",
+    "email": "camilamansilla203@gmail.com",
+    "legajo_completo": "58489/3",
+    "dni": "41542640",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "59607/4",
+    "nombre": "ELEONORA",
+    "apellido": "MARQUEZ FENT",
+    "email": "marquezfent@gmail.com",
+    "legajo_completo": "59607/4",
+    "dni": "29230081",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69055/9",
+    "nombre": "Mora",
+    "apellido": "Mendez",
+    "email": "mori.mendezz@gmail.com",
+    "legajo_completo": "069055/9",
+    "dni": "45295954",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "55885/8",
+    "nombre": "Ana Laura",
+    "apellido": "Miño",
+    "email": "minoanalaura@gmail.com",
+    "legajo_completo": "55885/8",
+    "dni": "28046782",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63637/0",
+    "nombre": "Martina",
+    "apellido": "Ontivero",
+    "email": "ontiveromartina28@gmail.com",
+    "legajo_completo": "63637/0",
+    "dni": "43044288",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69090/2",
+    "nombre": "Caterina Oriana",
+    "apellido": "Otero",
+    "email": "catyotero11@gmail.com",
+    "legajo_completo": "069090/2",
+    "dni": "46941587",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "65765/6",
+    "nombre": "Leslie Dayanna",
+    "apellido": "Pacheco Paladinez",
+    "email": "lesliedayanna.unlp@gmail.com",
+    "legajo_completo": "65765/6",
+    "dni": "96178598",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "55854/0",
+    "nombre": "Sofia Magali",
+    "apellido": "Pedroli",
+    "email": "sofiapedroli17@hotmail.com",
+    "legajo_completo": "55854/0",
+    "dni": "41895640",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69102/7",
+    "nombre": "Janina",
+    "apellido": "PEÑA GUANOLIQUIN",
+    "email": "pgjanina@gmail.com",
+    "legajo_completo": "069102/7",
+    "dni": "96409347",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63629/0",
+    "nombre": "Jesus Fernando",
+    "apellido": "Piramanrique Diaz",
+    "email": "jeferpi999@gmail.com",
+    "legajo_completo": "63629/0",
+    "dni": "95984592",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69139/1",
+    "nombre": "Schakira Araceli",
+    "apellido": "Rodríguez",
+    "email": "rodriguezsshakira@gmail.com",
+    "legajo_completo": "069139/1",
+    "dni": "45053110",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69142/6",
+    "nombre": "Alexandra",
+    "apellido": "Romero",
+    "email": "niyooo2003@gmail.com",
+    "legajo_completo": "069142/6",
+    "dni": "44711340",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "59711/2",
+    "nombre": "Belén",
+    "apellido": "Segovia",
+    "email": "bele.verdes2@gmail.com",
+    "legajo_completo": "59711/2",
+    "dni": "37021355",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63634/6",
+    "nombre": "Lisy Suarez",
+    "apellido": "Suarez Bonilla",
+    "email": "lisymedunlp@gmail.com",
+    "legajo_completo": "63634/6",
+    "dni": "96175007",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69173/4",
+    "nombre": "JUSTIN PATRICIO",
+    "apellido": "TAMAY VELECELA",
+    "email": "jptamayviajar@gmail.com",
+    "legajo_completo": "069173/4",
+    "dni": "20961948275",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "65277/4",
+    "nombre": "Selena",
+    "apellido": "Torres Acosta",
+    "email": "selenatorresacosta402@gmail.com",
+    "legajo_completo": "65277/4",
+    "dni": "96173659",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69190/5",
+    "nombre": "Micaela Ayelen",
+    "apellido": "Vergara",
+    "email": "micav8590@gmail.com",
+    "legajo_completo": "069190/5",
+    "dni": "41457765",
+    "cude": null,
+    "created_at": "2026-07-22T03:37:55.325946+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66301/0",
+    "nombre": "Josefina",
+    "apellido": "Almasia",
+    "email": "josefinaalmasia05@gmail.com",
+    "legajo_completo": "66301/0",
+    "dni": "46006117",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "56018/4",
+    "nombre": "Julieta",
+    "apellido": "Angelani",
+    "email": "julietaangelani007@gmail.com",
+    "legajo_completo": "56018/4",
+    "dni": "43397744",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "59622/3",
+    "nombre": "Cristian",
+    "apellido": "Arias Jaime",
+    "email": "cristian.ariasjaime@gmail.com",
+    "legajo_completo": "59622/3",
+    "dni": "44506930",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "43824/0",
+    "nombre": "Ariadna Florencia",
+    "apellido": "Benedetto",
+    "email": "ariadnabenedetto1998@gmail.com",
+    "legajo_completo": "43824/0",
+    "dni": "40768791",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68885/7",
+    "nombre": "Marilyn Angie",
+    "apellido": "Bravo",
+    "email": "marilynbravo00@gmail.com",
+    "legajo_completo": "068885/7",
+    "dni": "41429380",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "48824/2",
+    "nombre": "Agustina",
+    "apellido": "Buzali Ale",
+    "email": "agusbuzali9@gmail.com",
+    "legajo_completo": "48824/2",
+    "dni": "39872057",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "43404/2",
+    "nombre": "Juliana",
+    "apellido": "Caballero Miñola",
+    "email": "julicaba1797@gmail.com",
+    "legajo_completo": "43404/2",
+    "dni": "40810124",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68894/8",
+    "nombre": "GIANELLA CRHISTELL",
+    "apellido": "CABALLERO OLAVE",
+    "email": "gianellytacco@gmail.com",
+    "legajo_completo": "068894/8",
+    "dni": "96175061",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "51064/9",
+    "nombre": "Yanina",
+    "apellido": "Cabrera Pogo",
+    "email": "yaninacabrerap1992@gmail.com",
+    "legajo_completo": "51064/9",
+    "dni": "95679864",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66346/4",
+    "nombre": "Francisco",
+    "apellido": "Cangiani",
+    "email": "franciscocangiani3@gmail.com",
+    "legajo_completo": "66346/4",
+    "dni": "46345368",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66358/8",
+    "nombre": "Fiorella Paz",
+    "apellido": "Chavez",
+    "email": "chavezfiorella07@gmail.com",
+    "legajo_completo": "66358/8",
+    "dni": "46434919",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66359/0",
+    "nombre": "Lourdes",
+    "apellido": "Cienfuegos Crocco",
+    "email": "lourdescienfuegoscrocco@gmail.com",
+    "legajo_completo": "66359/0",
+    "dni": "43799078",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "55935/0",
+    "nombre": "Maria De Los Milagros",
+    "apellido": "Cortequin Baez",
+    "email": "milicortequin@gmail.com",
+    "legajo_completo": "55935/0",
+    "dni": "39597786",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "48980/4",
+    "nombre": "Candela",
+    "apellido": "Di Geronimo",
+    "email": "candeladiggeronimo@hotmail.com",
+    "legajo_completo": "48980/4",
+    "dni": "42436509",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68950/9",
+    "nombre": "Rocío Belén",
+    "apellido": "Equiza",
+    "email": "rocie2009@hotmail.com",
+    "legajo_completo": "068950/9",
+    "dni": "41538799",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68973/5",
+    "nombre": "Micaela",
+    "apellido": "Gamarra",
+    "email": "micagamarra13@gmail.com",
+    "legajo_completo": "068973/5",
+    "dni": "43178993",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68986/1",
+    "nombre": "Sofia Agustina",
+    "apellido": "Goitea",
+    "email": "sofiagoitea@gmail.com",
+    "legajo_completo": "068986/1",
+    "dni": "42588012",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63532/1",
+    "nombre": "Romina",
+    "apellido": "Gomez",
+    "email": "rominago0mez583@gmail.com",
+    "legajo_completo": "63532/1",
+    "dni": "33876825",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63547/9",
+    "nombre": "Maria Jose",
+    "apellido": "Gonzalez",
+    "email": "majoogonzalez693@gmail.com",
+    "legajo_completo": "63547/9",
+    "dni": "44936247",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68997/5",
+    "nombre": "Guadalupe Aldana",
+    "apellido": "Goyenola",
+    "email": "ggoyenola22@gmail.com",
+    "legajo_completo": "068997/5",
+    "dni": "42153826",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66436/5",
+    "nombre": "Luz abigail",
+    "apellido": "Huamani Huallpayunca",
+    "email": "abigailluz673@gmail.com",
+    "legajo_completo": "66436/5",
+    "dni": "96240671",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69013/8",
+    "nombre": "Adrien Lobertino",
+    "apellido": "Isidro Miraval",
+    "email": "isidroadrien@gmail.com",
+    "legajo_completo": "069013/8",
+    "dni": "96290827",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "51198/2",
+    "nombre": "Aldana Micaela",
+    "apellido": "Maldonado",
+    "email": "micaela.maldoo99@gmail.com",
+    "legajo_completo": "51198/2",
+    "dni": "42094710",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66489/9",
+    "nombre": "Santiago Nicolas",
+    "apellido": "Mendez",
+    "email": "santiagomendezzn@hotmail.com",
+    "legajo_completo": "66489/9",
+    "dni": "41118785",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66504/0",
+    "nombre": "Alexandra",
+    "apellido": "Morales Salvatierra",
+    "email": "jessalexandram2@gmail.com",
+    "legajo_completo": "66504/0",
+    "dni": "96184465",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66510/7",
+    "nombre": "CARLOS XAVIER",
+    "apellido": "MURILLO PADILLA",
+    "email": "carlosmurillopadilla30@gmail.com",
+    "legajo_completo": "66510/7",
+    "dni": "96274231",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69078/6",
+    "nombre": "Gladys Mabel",
+    "apellido": "Nuñez Duarte",
+    "email": "duartegla538@gmail.com",
+    "legajo_completo": "069078/6",
+    "dni": "94694010",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66519/7",
+    "nombre": "Rocío Belén",
+    "apellido": "Ojeda",
+    "email": "rociobojeda@gmail.com",
+    "legajo_completo": "66519/7",
+    "dni": "42629568",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69084/4",
+    "nombre": "Anghely Belen",
+    "apellido": "Olortegui Baldes",
+    "email": "anghyolortegui@gmail.com",
+    "legajo_completo": "069084/4",
+    "dni": "94726161",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66521/1",
+    "nombre": "Angela",
+    "apellido": "Ortega",
+    "email": "anguie.orte02@gmail.com",
+    "legajo_completo": "66521/1",
+    "dni": "96291533",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66527/7",
+    "nombre": "Ariadna Luna",
+    "apellido": "Oyarzo Vargas",
+    "email": "ariadnalunaoyarzo@gmail.com",
+    "legajo_completo": "66527/7",
+    "dni": "96172011",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66529/9",
+    "nombre": "Virginia Anabel",
+    "apellido": "Pacheco",
+    "email": "virgipacheco98@gmail.com",
+    "legajo_completo": "66529/9",
+    "dni": "42323304",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66537/9",
+    "nombre": "Antonella",
+    "apellido": "Parodi",
+    "email": "antoppp123@gmail.com",
+    "legajo_completo": "66537/9",
+    "dni": "42323370",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "59571/9",
+    "nombre": "Rosa Amalia Milagros",
+    "apellido": "Perello",
+    "email": "roperello1998@gmail.com",
+    "legajo_completo": "59571/9",
+    "dni": "41131070",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69110/7",
+    "nombre": "Melina",
+    "apellido": "Perla",
+    "email": "meluuperla5@gmail.com",
+    "legajo_completo": "069110/7",
+    "dni": "47062311",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "55813/0",
+    "nombre": "Cristian",
+    "apellido": "Ponce",
+    "email": "cristian.ponesc@gmail.com",
+    "legajo_completo": "55813/0",
+    "dni": "44215973",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "56178/0",
+    "nombre": "julieta",
+    "apellido": "Pozzi",
+    "email": "juli.pozzi.2015@gmail.com",
+    "legajo_completo": "56178/0",
+    "dni": "43397529",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66552/9",
+    "nombre": "Agustina",
+    "apellido": "Quiles Hijerra",
+    "email": "agusttina005@gmail.com",
+    "legajo_completo": "66552/9",
+    "dni": "42447211",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69130/2",
+    "nombre": "Stefania Ornella",
+    "apellido": "Ravetti Rodriguez",
+    "email": "stefaniaravetti10@gmail.com",
+    "legajo_completo": "069130/2",
+    "dni": "44080541",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "59790/9",
+    "nombre": "Juan Ruben",
+    "apellido": "Rocha Siles",
+    "email": "juanrocha3257@gmail.com",
+    "legajo_completo": "59790/9",
+    "dni": "94151910",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63690/5",
+    "nombre": "Liz Paola",
+    "apellido": "Rodríguez Arzamendia",
+    "email": "lizpaolarodriguezarzamendia@gmail.com",
+    "legajo_completo": "63690/5",
+    "dni": "95174933",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69141/5",
+    "nombre": "Alejandra",
+    "apellido": "Roldan",
+    "email": "aleroldan31244@gmail.com",
+    "legajo_completo": "069141/5",
+    "dni": "31244340",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66586/9",
+    "nombre": "Candela",
+    "apellido": "Sanchez",
+    "email": "candelaaldanasanchez@gmail.com",
+    "legajo_completo": "66586/9",
+    "dni": "44890037",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66597/2",
+    "nombre": "Evelyn",
+    "apellido": "Silva",
+    "email": "ayelensilvq@gmail.com",
+    "legajo_completo": "66597/2",
+    "dni": "45917980",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "50812/8",
+    "nombre": "MARIELA CONCEP",
+    "apellido": "TORRES SANDOVAL",
+    "email": "mary_med19@hotmail.com",
+    "legajo_completo": "50812/8",
+    "dni": "93047273",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66611/2",
+    "nombre": "Tihana Abigail",
+    "apellido": "Trejo",
+    "email": "tinytrj6@gmail.com",
+    "legajo_completo": "66611/2",
+    "dni": "46642891",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "60838/4",
+    "nombre": "Simon",
+    "apellido": "Valdes",
+    "email": "valdessimon12@gmail.com",
+    "legajo_completo": "60838/4",
+    "dni": "43178689",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63647/2",
+    "nombre": "Rocio Anabela",
+    "apellido": "Woolay Bustamante",
+    "email": "roci3183@gmail.com",
+    "legajo_completo": "63647/2",
+    "dni": "45525709",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66641/8",
+    "nombre": "Jazmín Alejandra",
+    "apellido": "Zurita Rojas",
+    "email": "zuritajazmin6@gmail.com",
+    "legajo_completo": "66641/8",
+    "dni": "43181998",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "41184/1",
+    "nombre": "Claudia Beatriz",
+    "apellido": "Aballay",
+    "email": "clau_mclean@hotmail.com",
+    "legajo_completo": "41184/1",
+    "dni": "30962479",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63305/1",
+    "nombre": "Jose",
+    "apellido": "Aguirre",
+    "email": "joseaguirre593@yahoo.com.ar",
+    "legajo_completo": "63305/1",
+    "dni": "18039543",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68858/4",
+    "nombre": "Ariana Dafne",
+    "apellido": "Arias",
+    "email": "aruarias22@gmail.com",
+    "legajo_completo": "068858/4",
+    "dni": "43738414",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68867/5",
+    "nombre": "Camila Agustina",
+    "apellido": "Bárcena Sandoval",
+    "email": "camilabarcena.unlp@gmail.com",
+    "legajo_completo": "068867/5",
+    "dni": "45812674",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "59532/2",
+    "nombre": "Melanie Rocio",
+    "apellido": "Castillo",
+    "email": "mrociocast12@gmail.com",
+    "legajo_completo": "59532/2",
+    "dni": "42155932",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66355/5",
+    "nombre": "DAPHNE ZARELLA",
+    "apellido": "CASTRO",
+    "email": "daphnecastroburgos@gmail.com",
+    "legajo_completo": "66355/5",
+    "dni": "8326726",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66356/6",
+    "nombre": "Agustina",
+    "apellido": "Chamorro",
+    "email": "aguschamorro13@gmail.com",
+    "legajo_completo": "66356/6",
+    "dni": "44426547",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63431/6",
+    "nombre": "Estela Olga",
+    "apellido": "Correia de Oliveira",
+    "email": "estelaoliveiraoc@gmail.com",
+    "legajo_completo": "63431/6",
+    "dni": "95906654",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63441/8",
+    "nombre": "julieta",
+    "apellido": "Dacunto",
+    "email": "dacjulietajacqueline@gmail.com",
+    "legajo_completo": "63441/8",
+    "dni": "30487005",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66263/1",
+    "nombre": "Femenino",
+    "apellido": "DE LA MATA",
+    "email": "delamattaevelyn@gmail.com",
+    "legajo_completo": "66263/1",
+    "dni": "37844525",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "48314/3",
+    "nombre": "Milouse",
+    "apellido": "Dorcin",
+    "email": "milousedorcin10@gmail.com",
+    "legajo_completo": "48314/3",
+    "dni": "19118547",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66385/1",
+    "nombre": "Daiana Esper",
+    "apellido": "Esper",
+    "email": "daianaciriaesper@gmail.com",
+    "legajo_completo": "66385/1",
+    "dni": "41998269",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68965/6",
+    "nombre": "Carolina",
+    "apellido": "Ferreyra",
+    "email": "carolinaferreyra82@gmail.com",
+    "legajo_completo": "068965/6",
+    "dni": "29772657",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68977/0",
+    "nombre": "Carol Antuane",
+    "apellido": "Garcia Pereda",
+    "email": "carolgarciapereda31@gmail.com",
+    "legajo_completo": "068977/0",
+    "dni": "95829230",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63525/2",
+    "nombre": "Erica",
+    "apellido": "Gomez",
+    "email": "ericagomez850@gmail.com",
+    "legajo_completo": "63525/2",
+    "dni": "45294120",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "48798/8",
+    "nombre": "Victoria Anahí",
+    "apellido": "Gonzalez",
+    "email": "vickyanahi7@hotmail.com",
+    "legajo_completo": "48798/8",
+    "dni": "40624656",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69015/0",
+    "nombre": "Abril Micaela",
+    "apellido": "Jara",
+    "email": "abrilmicaelajara@gmail.com",
+    "legajo_completo": "069015/0",
+    "dni": "47057181",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "47324/1",
+    "nombre": "Yamila Anahi",
+    "apellido": "Ledesma",
+    "email": "ledesmahannah.5@gmail.com",
+    "legajo_completo": "47324/1",
+    "dni": "44173736",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "48059/7",
+    "nombre": "Jessica Belen",
+    "apellido": "Linares",
+    "email": "jessilinares88@gmail.com",
+    "legajo_completo": "48059/7",
+    "dni": "42636929",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "50990/6",
+    "nombre": "Eliana",
+    "apellido": "Livi",
+    "email": "eliloza_082@hotmail.com",
+    "legajo_completo": "50990/6",
+    "dni": "37357044",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69036/5",
+    "nombre": "Caterina",
+    "apellido": "López",
+    "email": "caterinalopez210@gmail.com",
+    "legajo_completo": "069036/5",
+    "dni": "43656204",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63410/1",
+    "nombre": "Carla Evangelina",
+    "apellido": "Maldonado Canchi",
+    "email": "evangelinamaldonadoph@outlook.com",
+    "legajo_completo": "63410/1",
+    "dni": "36757937",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63606/2",
+    "nombre": "Juanita Magdalena",
+    "apellido": "Martínez Meritens",
+    "email": "juaniimatz@gmail.com",
+    "legajo_completo": "63606/2",
+    "dni": "44487176",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66500/5",
+    "nombre": "Lucas Lautaro",
+    "apellido": "Molina",
+    "email": "lucasmolina7789@gmail.com",
+    "legajo_completo": "66500/5",
+    "dni": "43453602",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63537/7",
+    "nombre": "Scarlehts Dayana",
+    "apellido": "Murillo Gomez",
+    "email": "scarlethmurillo0922@gmail.com",
+    "legajo_completo": "63537/7",
+    "dni": "96230540",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63558/2",
+    "nombre": "Iara",
+    "apellido": "Otero",
+    "email": "iaraotero05@gmail.com",
+    "legajo_completo": "63558/2",
+    "dni": "44415766",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63651/7",
+    "nombre": "Lucía",
+    "apellido": "Padrón",
+    "email": "padronlucia22@gmail.com",
+    "legajo_completo": "63651/7",
+    "dni": "43732435",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "51001/2",
+    "nombre": "Diego Omar",
+    "apellido": "Palacios",
+    "email": "di3go_palacios@hotmail.com",
+    "legajo_completo": "51001/2",
+    "dni": "39980926",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69096/8",
+    "nombre": "Rosalia",
+    "apellido": "Paniagua Andia",
+    "email": "paniaguarosalia4@gmail.com",
+    "legajo_completo": "069096/8",
+    "dni": "94891140",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69117/5",
+    "nombre": "Debora Agustina",
+    "apellido": "Ponce Nuñez",
+    "email": "ponceagustina200@gmail.com",
+    "legajo_completo": "069117/5",
+    "dni": "42975780",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "54677/8",
+    "nombre": "Selene Berenice",
+    "apellido": "Pozzi Piñeyro",
+    "email": "selenepozzi09@gmail.com",
+    "legajo_completo": "54677/8",
+    "dni": "42174816",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "69122/2",
+    "nombre": "Camila Pilar",
+    "apellido": "Quintana",
+    "email": "campiliquin@gmail.com",
+    "legajo_completo": "069122/2",
+    "dni": "44535979",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "63654/1",
+    "nombre": "MIGUEL ANGEL",
+    "apellido": "RAMOLO",
+    "email": "pikigelp@hotmail.com.ar",
+    "legajo_completo": "63654/1",
+    "dni": "18283122",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66571/2",
+    "nombre": "Luz",
+    "apellido": "RONDAN",
+    "email": "luzmariarondan@gmail.com",
+    "legajo_completo": "66571/2",
+    "dni": "46740496",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "54140/7",
+    "nombre": "Katherine Gisele",
+    "apellido": "Segovia",
+    "email": "katherine.segovia@outlook.com",
+    "legajo_completo": "54140/7",
+    "dni": "42413330",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66594/0",
+    "nombre": "Liliana Soledad",
+    "apellido": "Severiche",
+    "email": "sole06_@hotmail.com",
+    "legajo_completo": "66594/0",
+    "dni": "41131500",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "49498/3",
+    "nombre": "Martina Celeste",
+    "apellido": "Soto",
+    "email": "marttinaceleste@gmail.com",
+    "legajo_completo": "49498/3",
+    "dni": "43016198",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66614/5",
+    "nombre": "Belén",
+    "apellido": "Ursua",
+    "email": "beluursua01@hotmail.com",
+    "legajo_completo": "66614/5",
+    "dni": "42738746",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "49725/4",
+    "nombre": "Cristina del Pilar",
+    "apellido": "Valles Vasquez",
+    "email": "pilarvalles1303@gmail.com",
+    "legajo_completo": "49725/4",
+    "dni": "19106612",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66617/8",
+    "nombre": "Eliana",
+    "apellido": "Vera",
+    "email": "ev973409@gmail.com",
+    "legajo_completo": "66617/8",
+    "dni": "47158354",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "66619/0",
+    "nombre": "Luciana Micaela",
+    "apellido": "Vera",
+    "email": "lucianaavera@gmail.com",
+    "legajo_completo": "66619/0",
+    "dni": "37942326",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": null
+  },
+  {
+    "legajo": "68902/0",
+    "nombre": "NATALIA NOEMI",
+    "apellido": "CARCAMO ALVAREZ",
+    "email": "natalia.carcamo.alvarez@gmail.com",
+    "legajo_completo": "068902/0",
+    "dni": "96291847",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {},
+      "cudeStatus": null,
+      "notasStatus": {
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {},
+      "cambioComisionStatus": {}
+    }
+  },
+  {
+    "legajo": "63572/9",
+    "nombre": "Raúl Alberto",
+    "apellido": "Vera",
+    "email": "veraraulalberto9@gmail.com",
+    "legajo_completo": "63572/9",
+    "dni": "27122250",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {},
+      "cudeStatus": null,
+      "notasStatus": {
+        "c1784681924691_1er Parcial_2da Fecha": true,
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {
+        "s1785630940632": "validated"
+      },
+      "cambioComisionStatus": {}
+    }
+  },
+  {
+    "legajo": "63531/9",
+    "nombre": "Iara Yael",
+    "apellido": "Gomez",
+    "email": "gomeziara252320@gmail.com",
+    "legajo_completo": "63531/9",
+    "dni": "44452689",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {},
+      "cudeStatus": null,
+      "notasStatus": {
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {},
+      "cambioComisionStatus": {}
+    }
+  },
+  {
+    "legajo": "66477/5",
+    "nombre": "Brisa Mariana",
+    "apellido": "Martinez",
+    "email": "bm68346@gmail.com",
+    "legajo_completo": "66477/5",
+    "dni": "46436557",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {},
+      "cudeStatus": null,
+      "notasStatus": {
+        "c1784681924691_1er Parcial_2da Fecha": true,
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {
+        "s1785630940632": "rejected"
+      },
+      "cambioComisionStatus": {}
+    }
+  },
+  {
+    "legajo": "54454/3",
+    "nombre": "Nuria",
+    "apellido": "Tau",
+    "email": "taunemo@gmail.com",
+    "legajo_completo": "54454/3",
+    "dni": "40477224",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {},
+      "cudeStatus": null,
+      "notasStatus": {
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {
+        "s1785630940632": "validated"
+      },
+      "cambioComisionStatus": {}
+    }
+  },
+  {
+    "legajo": "66410/4",
+    "nombre": "Candela Jazmín",
+    "apellido": "Gil",
+    "email": "candelagil200@gmail.com",
+    "legajo_completo": "66410/4",
+    "dni": "44839914",
+    "cude": {
+      "activo": true,
+      "estado": "validado",
+      "archivo": "IMG-20260807-WA0046.jpg",
+      "archivoUrl": "https://dbrhpbhueiwednrkkelb.supabase.co/storage/v1/object/sign/cude/cude_66410-4_1786134397237.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zYzVjMjdjNi0wNjFkLTQ4ZmYtYjE3OC0yYTNmNDU3ZDE0NjgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJjdWRlL2N1ZGVfNjY0MTAtNF8xNzg2MTM0Mzk3MjM3LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODYxMzQ0MDAsImV4cCI6MTgxNzY3MDQwMH0.MQfTBHWPCzTuQrFJrYcmxJ3UsCindZsvuJE2uEspsZY",
+      "vencimiento": "2026-08-28",
+      "motivoRechazo": null,
+      "fechaSolicitud": "07/08/2026"
+    },
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {
+        "scf_1786134865436": "pendiente"
+      },
+      "cudeStatus": "validado",
+      "notasStatus": {
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {
+        "s1785630940632": "validated",
+        "s1785630964601": "pending"
+      },
+      "cambioComisionStatus": {}
+    }
+  },
+  {
+    "legajo": "58000/2",
+    "nombre": "Soledad",
+    "apellido": "Fernández",
+    "email": "solfernan1977@gmail.com",
+    "legajo_completo": "58000/2",
+    "dni": "26251841",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:02.857317+00:00",
+    "novedades_vistas": {
+      "certStatus": {},
+      "cudeStatus": null,
+      "notasStatus": {
+        "c1784681924691_1er Parcial_2da Fecha": true,
+        "c1784681924691_1er Parcial_4ta Fecha": true,
+        "c1784681924691_1er Parcial_1era Fecha": true,
+        "c1784681924691_1er Parcial_3era Fecha": true
+      },
+      "skillStatus": {},
+      "cambioComisionStatus": {}
+    }
+  },
+  {
+    "legajo": "68990/7",
+    "nombre": "Alexine Mabel Nazareth",
+    "apellido": "Gonzalez",
+    "email": "alexinegonzalez@gmail.com",
+    "legajo_completo": "068990/7",
+    "dni": "39664748",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {},
+      "cudeStatus": null,
+      "notasStatus": {
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {
+        "s1785630940632": "pending",
+        "s1785630964601": "validated"
+      },
+      "cambioComisionStatus": {}
+    }
+  },
+  {
+    "legajo": "69023/0",
+    "nombre": "Berenice",
+    "apellido": "Laurini",
+    "email": "lauriniberenice@gmail.com",
+    "legajo_completo": "069023/0",
+    "dni": "48058015",
+    "cude": {
+      "activo": true,
+      "estado": "validado",
+      "archivo": "Certificado_Laurini_Berenice_Electrocardiografía_1er_Parcial_1era_Fecha_TPC.pdf",
+      "archivoUrl": "https://dbrhpbhueiwednrkkelb.supabase.co/storage/v1/object/sign/cude/cude_69023-0_1786134393231.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zYzVjMjdjNi0wNjFkLTQ4ZmYtYjE3OC0yYTNmNDU3ZDE0NjgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJjdWRlL2N1ZGVfNjkwMjMtMF8xNzg2MTM0MzkzMjMxLnBkZiIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODYxMzQzOTQsImV4cCI6MTgxNzY3MDM5NH0.JiRm-xOgf726o0ZBpb1OUBjhw6xXYJym9fzuQ-3KTLs",
+      "vencimiento": "2026-08-21",
+      "motivoRechazo": null,
+      "fechaSolicitud": "07/08/2026"
+    },
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {},
+      "cudeStatus": "validado",
+      "notasStatus": {
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {
+        "s1785630940632": "validated"
+      },
+      "cambioComisionStatus": {}
+    }
+  },
+  {
+    "legajo": "69024/1",
+    "nombre": "Julieta",
+    "apellido": "Laxagueborde",
+    "email": "fparola@med.unlp.edu.ar",
+    "legajo_completo": "069024/1",
+    "dni": "38589849",
+    "cude": {
+      "activo": false,
+      "estado": "rechazado",
+      "archivo": "Certificado_Laxagueborde_Julieta_Electrocardiografía_1er_Parcial_1era_Fecha_TPC.pdf",
+      "archivoUrl": "https://dbrhpbhueiwednrkkelb.supabase.co/storage/v1/object/sign/cude/cude_69024-1_1786229963954.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zYzVjMjdjNi0wNjFkLTQ4ZmYtYjE3OC0yYTNmNDU3ZDE0NjgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJjdWRlL2N1ZGVfNjkwMjQtMV8xNzg2MjI5OTYzOTU0LnBkZiIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODYyMjk5NjYsImV4cCI6MTgxNzc2NTk2Nn0.XLWvy5G4urBcS7wOkQAX5OP5vjM-BoOyaDniekHpcS0",
+      "vencimiento": "2026-07-01",
+      "motivoRechazo": "nada",
+      "fechaSolicitud": "08/08/2026"
+    },
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {
+        "scf_1785122828819": "aprobado",
+        "scf_1785123388879": "rechazado",
+        "scf_1785866482986": "aprobado"
+      },
+      "cudeStatus": "rechazado",
+      "notasStatus": {
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {},
+      "cambioComisionStatus": {
+        "sol1785542477537": "rechazada",
+        "sol1785542535721": "aprobada",
+        "sol1785542681769": "aprobada",
+        "sol1785543080018": "rechazada",
+        "sol1785544221027": "rechazada",
+        "sol1785549321405": "rechazada",
+        "sol1785780993195": "aprobada",
+        "sol1785781038430": "aprobada"
+      }
+    }
+  }
+]
