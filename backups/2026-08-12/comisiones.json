@@ -1,0 +1,278 @@
+[
+  {
+    "id": "c1784681904218",
+    "materia_id": "m1784681884860",
+    "nombre": "Comisión 1",
+    "docente_dni": "18549214",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-07-22T00:58:24.489617+00:00",
+    "teorico": {
+      "dia": "Jueves",
+      "comun": true,
+      "lugar": "Anexo Calle 7",
+      "horario": "08:00 a 10:00",
+      "asincronico": false,
+      "tomaAsistencia": true
+    },
+    "practico": {
+      "dia": "Viernes",
+      "lugar": "FCM Central",
+      "horario": "12:00 a 14:00"
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "c1784681924691",
+    "materia_id": "m1784681884860",
+    "nombre": "Comisión 3",
+    "docente_dni": "32527404",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-07-22T00:58:44.918876+00:00",
+    "teorico": {
+      "dia": "Jueves",
+      "comun": true,
+      "lugar": "Anexo Calle 7",
+      "horario": "08:00 a 10:00",
+      "asincronico": false,
+      "tomaAsistencia": true
+    },
+    "practico": {
+      "dia": "Viernes",
+      "lugar": "FCM Central",
+      "horario": "12:00 a 18:00"
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "c1784681914312",
+    "materia_id": "m1784681884860",
+    "nombre": "Comisión 2",
+    "docente_dni": "28769839",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-07-22T00:58:34.542944+00:00",
+    "teorico": {
+      "dia": "Jueves",
+      "comun": true,
+      "lugar": "Anexo Calle 7",
+      "horario": "08:00 a 10:00",
+      "asincronico": false,
+      "tomaAsistencia": true
+    },
+    "practico": {
+      "dia": "Viernes",
+      "lugar": "FCM Central",
+      "horario": "10:00 a 14:00"
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "tc1786297059115",
+    "materia_id": "m1784681884860",
+    "nombre": "Teórico común",
+    "docente_dni": null,
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-08-09T17:37:38.436188+00:00",
+    "teorico": null,
+    "practico": null,
+    "es_teorico_comun": true,
+    "activo": true
+  },
+  {
+    "id": "c1786491373237",
+    "materia_id": "m1784682584887",
+    "nombre": "Comisión 1",
+    "docente_dni": "32527404",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-08-11T23:36:13.014588+00:00",
+    "teorico": {
+      "dia": "",
+      "comun": false,
+      "lugar": "",
+      "horario": "",
+      "asincronico": false,
+      "tomaAsistencia": false
+    },
+    "practico": {
+      "dia": "",
+      "lugar": "",
+      "horario": ""
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "c1786491391161",
+    "materia_id": "m1784682584887",
+    "nombre": "Comisión 2",
+    "docente_dni": "32527404",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-08-11T23:36:30.56624+00:00",
+    "teorico": {
+      "dia": "",
+      "comun": false,
+      "lugar": "",
+      "horario": "",
+      "asincronico": false,
+      "tomaAsistencia": false
+    },
+    "practico": {
+      "dia": "",
+      "lugar": "",
+      "horario": ""
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "c1786491404134",
+    "materia_id": "m1784682584887",
+    "nombre": "Comisión 3",
+    "docente_dni": "32527404",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-08-11T23:36:43.534972+00:00",
+    "teorico": {
+      "dia": "",
+      "comun": false,
+      "lugar": "",
+      "horario": "",
+      "asincronico": false,
+      "tomaAsistencia": false
+    },
+    "practico": {
+      "dia": "",
+      "lugar": "",
+      "horario": ""
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "c1786491412699",
+    "materia_id": "m1784682584887",
+    "nombre": "Comisión 4",
+    "docente_dni": "32527404",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-08-11T23:36:52.104617+00:00",
+    "teorico": {
+      "dia": "",
+      "comun": false,
+      "lugar": "",
+      "horario": "",
+      "asincronico": false,
+      "tomaAsistencia": false
+    },
+    "practico": {
+      "dia": "",
+      "lugar": "",
+      "horario": ""
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "c1786491480523",
+    "materia_id": "m1784682584887",
+    "nombre": "Comisión 5",
+    "docente_dni": "33788328",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-08-11T23:37:59.961513+00:00",
+    "teorico": {
+      "dia": "",
+      "comun": false,
+      "lugar": "",
+      "horario": "",
+      "asincronico": true,
+      "tomaAsistencia": false
+    },
+    "practico": {
+      "dia": "Viernes",
+      "lugar": "Anexo Calle 7",
+      "horario": "13:30"
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "c1786491511411",
+    "materia_id": "m1784682584887",
+    "nombre": "Comisión 6",
+    "docente_dni": "33788328",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-08-11T23:38:30.869721+00:00",
+    "teorico": {
+      "dia": "",
+      "comun": false,
+      "lugar": "",
+      "horario": "",
+      "asincronico": true,
+      "tomaAsistencia": false
+    },
+    "practico": {
+      "dia": "Viernes",
+      "lugar": "Anexo Calle 7",
+      "horario": "15:30"
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "c1786491570275",
+    "materia_id": "m1784682584887",
+    "nombre": "Comisión Gral.",
+    "docente_dni": "",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-08-11T23:39:29.67865+00:00",
+    "teorico": {
+      "dia": "",
+      "comun": false,
+      "lugar": "",
+      "horario": "",
+      "asincronico": false,
+      "tomaAsistencia": false
+    },
+    "practico": {
+      "dia": "",
+      "lugar": "",
+      "horario": ""
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  },
+  {
+    "id": "c1785293524071",
+    "materia_id": "m1784682637922",
+    "nombre": "unica",
+    "docente_dni": "",
+    "año": 2026,
+    "periodo": 1,
+    "created_at": "2026-07-29T02:52:03.077465+00:00",
+    "teorico": {
+      "dia": "",
+      "comun": false,
+      "lugar": "",
+      "horario": "",
+      "asincronico": true
+    },
+    "practico": {
+      "dia": "Viernes",
+      "lugar": "vc",
+      "horario": "12:00 a 14:00"
+    },
+    "es_teorico_comun": false,
+    "activo": true
+  }
+]
