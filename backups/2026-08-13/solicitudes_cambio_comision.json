@@ -1,0 +1,98 @@
+[
+  {
+    "id": "sol1785542477537",
+    "legajo": "69024/1",
+    "materia_id": "m1784681884860",
+    "de_com_id": "c1784681924691",
+    "a_com_id": "c1784681914312",
+    "motivo": "Trabajo",
+    "estado": "rechazada",
+    "motivo_rechazo": "Cupo lleno",
+    "fecha": "2026-08-01",
+    "created_at": "2026-08-01T00:01:15.273129+00:00"
+  },
+  {
+    "id": "sol1785542535721",
+    "legajo": "69024/1",
+    "materia_id": "m1784681884860",
+    "de_com_id": "c1784681924691",
+    "a_com_id": "c1784681914312",
+    "motivo": "Trabajo",
+    "estado": "aprobada",
+    "motivo_rechazo": null,
+    "fecha": "2026-08-01",
+    "created_at": "2026-08-01T00:02:13.429302+00:00"
+  },
+  {
+    "id": "sol1785542681769",
+    "legajo": "69024/1",
+    "materia_id": "m1784681884860",
+    "de_com_id": "c1784681914312",
+    "a_com_id": "c1784681924691",
+    "motivo": "Trabajo2",
+    "estado": "aprobada",
+    "motivo_rechazo": null,
+    "fecha": "2026-08-01",
+    "created_at": "2026-08-01T00:04:39.727121+00:00"
+  },
+  {
+    "id": "sol1785543080018",
+    "legajo": "69024/1",
+    "materia_id": "m1784681884860",
+    "de_com_id": "c1784681924691",
+    "a_com_id": "c1784681914312",
+    "motivo": "Trabajo3",
+    "estado": "rechazada",
+    "motivo_rechazo": "nada",
+    "fecha": "2026-08-01",
+    "created_at": "2026-08-01T00:11:17.720018+00:00"
+  },
+  {
+    "id": "sol1785544221027",
+    "legajo": "69024/1",
+    "materia_id": "m1784681884860",
+    "de_com_id": "c1784681924691",
+    "a_com_id": "c1784681914312",
+    "motivo": "hola",
+    "estado": "rechazada",
+    "motivo_rechazo": "nadaaa",
+    "fecha": "2026-08-01",
+    "created_at": "2026-08-01T00:30:18.737984+00:00"
+  },
+  {
+    "id": "sol1785549321405",
+    "legajo": "69024/1",
+    "materia_id": "m1784681884860",
+    "de_com_id": "c1784681924691",
+    "a_com_id": "c1784681914312",
+    "motivo": "nada",
+    "estado": "rechazada",
+    "motivo_rechazo": "nada",
+    "fecha": "2026-08-01",
+    "created_at": "2026-08-01T01:55:19.170559+00:00"
+  },
+  {
+    "id": "sol1785780993195",
+    "legajo": "69024/1",
+    "materia_id": "m1784681884860",
+    "de_com_id": "c1784681924691",
+    "a_com_id": "c1784681914312",
+    "motivo": "hhij",
+    "estado": "aprobada",
+    "motivo_rechazo": null,
+    "fecha": "2026-08-03",
+    "created_at": "2026-08-03T18:16:33.480329+00:00"
+  },
+  {
+    "id": "sol1785781038430",
+    "legajo": "69024/1",
+    "materia_id": "m1784681884860",
+    "de_com_id": "c1784681914312",
+    "a_com_id": "c1784681924691",
+    "motivo": "j",
+    "estado": "aprobada",
+    "motivo_rechazo": null,
+    "fecha": "2026-08-03",
+    "created_at": "2026-08-03T18:17:18.691611+00:00"
+  }
+]
