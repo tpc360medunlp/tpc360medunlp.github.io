@@ -11466,7 +11466,7 @@ function openMesaModal(materiaId, año, mesaId, materiaNombre, mesaNombre) {
     <div id="mesa-import-status" style="margin-top:8px;font-size:12px;color:var(--gray-400)"></div>
     ${extraBtn}`;
 
-  const resultadosHTML = data.cargado
+  let resultadosHTML = data.cargado
     ? `<div style="margin-top:1rem">
         <div style="font-size:12px;font-weight:600;color:var(--gray-600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">
           ${data.resultados.length} alumno/s · Resultados cargados
