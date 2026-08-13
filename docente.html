@@ -1337,6 +1337,22 @@ async function ensureJsQR() {
   </div>
 </div>
 
+<!-- MODAL: anular llamado completo (todas las materias) -->
+<div class="modal-overlay" id="modal-anular-llamado">
+  <div class="modal" style="max-width:420px">
+    <h2 class="modal-title">Anular llamado completo</h2>
+    <p class="modal-sub">Esta acción no se puede deshacer.</p>
+    <div style="background:var(--red-light);border:1px solid #f5b8be;border-radius:var(--radius-md);padding:12px 16px;margin-bottom:1.25rem">
+      <div style="font-size:14px;font-weight:500;color:#b02030" id="confirm-anular-llamado-detalle"></div>
+      <div style="font-size:13px;color:#b02030;margin-top:4px">Se borrarán los resultados ya cargados de todas las materias para este llamado.</div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeAnularLlamadoModal()">Cancelar</button>
+      <button class="btn-primary" style="background:var(--red)" onclick="confirmAnularLlamadoCompleto()">Anular todas las mesas</button>
+    </div>
+  </div>
+</div>
+
 <!-- MODAL: QR asistencia -->
 <div class="modal-overlay" id="modal-qr">
   <div class="modal" style="max-width:400px;text-align:center">
@@ -11500,6 +11516,13 @@ function openMesaModal(materiaId, año, mesaId, materiaNombre, mesaNombre) {
           </div>`)}
       </div>`;
 
+  resultadosHTML += `
+    <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--gray-100)">
+      <button onclick="confirmarAnularLlamadoCompleto('${mesaId}', ${año})" style="padding:8px 16px;font-size:13px;border-radius:var(--radius-md);border:1.5px solid #f5b8be;background:white;color:#b02030;cursor:pointer;font-family:var(--font)">
+        🗑 Anular todas las mesas de este llamado
+      </button>
+    </div>`;
+
   document.getElementById('modal-mesa-title').textContent = `${materiaNombre} · ${mesaNombre} ${año}`;
   document.getElementById('modal-mesa-body').innerHTML = resultadosHTML;
   document.getElementById('modal-mesa').classList.add('open');
@@ -11512,6 +11535,30 @@ function toggleMesaCalendar(id) {
   const open = panel.style.display === 'none';
   panel.style.display  = open ? 'block' : 'none';
   if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+
+function confirmarAnularLlamadoCompleto(mesaId, año) {
+  const mesaInfo = CALENDARIO_MESAS.find(m => m.id === mesaId);
+  const materiasAfectadas = ordenarMateriasEstandar(MATERIAS);
+  window._anularLlamadoData = { mesaId, año, materiaIds: materiasAfectadas.map(m => m.id) };
+  document.getElementById('confirm-anular-llamado-detalle').textContent =
+    `${mesaInfo?.nombre || mesaId} ${año} — se van a anular las mesas de ${materiasAfectadas.length} materia/s.`;
+  document.getElementById('modal-anular-llamado').classList.add('open');
+}
+
+function closeAnularLlamadoModal() {
+  document.getElementById('modal-anular-llamado').classList.remove('open');
+}
+
+function confirmAnularLlamadoCompleto() {
+  const { mesaId, año, materiaIds } = window._anularLlamadoData;
+  materiaIds.forEach(materiaId => {
+    setMesaData(materiaId, año, mesaId, { cargado: false, anulada: true, resultados: [] });
+  });
+  closeAnularLlamadoModal();
+  document.getElementById('modal-mesa').classList.remove('open');
+  renderMesasFinalesView();
+  showToast(`Mesas anuladas en ${materiaIds.length} materia/s`);
 }
 
 function anularMesa() {
