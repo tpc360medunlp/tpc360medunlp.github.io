@@ -26,7 +26,6 @@ jobs:
           # docente.html
           docente = base \
               .replace('<link rel="manifest" href="manifest.json">', '<link rel="manifest" href="manifest-docente.json">') \
-              .replace('<title>TPC360 · Plataforma de Seguimiento Académico</title>', '<title>TPC360 · Docentes</title>') \
               .replace("const _savedRoleAtStart = localStorage.getItem('tpc360_role');",
                        "localStorage.setItem('tpc360_role','teacher');\nconst _savedRoleAtStart = 'teacher';")
 
@@ -36,7 +35,6 @@ jobs:
           # coordinacion.html
           coord = base \
               .replace('<link rel="manifest" href="manifest.json">', '<link rel="manifest" href="manifest-coordinacion.json">') \
-              .replace('<title>TPC360 · Plataforma de Seguimiento Académico</title>', '<title>TPC360 · Coordinación</title>') \
               .replace("const _savedRoleAtStart = localStorage.getItem('tpc360_role');",
                        "localStorage.setItem('tpc360_role','coordinator');\nconst _savedRoleAtStart = 'coordinator';")
 
