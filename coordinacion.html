@@ -6,7 +6,20 @@
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest-coordinacion.json">
 <link rel="apple-touch-icon" href="icon-192.png">
-<meta name="apple-mo
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TPC360">
+<meta name="theme-color" content="#0B1F3A">
+<title>TPC360 · Plataforma de Seguimiento Académico</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ── CARGA DINÁMICA DE LIBRERÍAS PESADAS (solo cuando se usan) ──
+const _loadedScripts = new Map();
+function loadScript(src) {
+  if (_loadedScripts.has(src)) return _loadedScripts.get(src);
+  const promise = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
     s.onload = resolve;
     s.onerror = () => reject(new Error(`No se pudo cargar ${src}`));
     document.head.appendChild(s);
