@@ -1,6 +1,6 @@
 {
   "name": "TPC360 · Coordinación",
-  "short_name": "TPC360 Coord",
+  "short_name": "TPC360",
   "description": "Plataforma de gestión académica de la Tecnicatura en Prácticas Cardiológicas · FCM · UNLP",
   "start_url": "/app/coordinacion.html",
   "scope": "/app/",
