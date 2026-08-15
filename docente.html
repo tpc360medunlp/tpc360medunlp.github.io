@@ -16587,7 +16587,7 @@ function buildTeacherCronogramaContent(materia, htmlTeoricoPractico) {
   }
 
   return alguno ? html
-    : htmlTeoricoPractico + `<div class="empty-state"><div class="empty-icon">📅</div><p>El cronograma de esta materia aún no fue cargado por coordinación.</p></div>`;
+    : `<div class="empty-state"><div class="empty-icon">📅</div><p>El cronograma de esta materia aún no fue cargado por coordinación.</p></div>`;
 }
 
 function renderTeacherCronogramaComision(comisionId) {
