@@ -1,0 +1,42 @@
+[
+  {
+    "id": 17,
+    "legajo": "69024/1",
+    "materia_id": "m1784682637922",
+    "mesa_label": "Febrero",
+    "nota": 10,
+    "estado": "aprobado"
+  },
+  {
+    "id": 18,
+    "legajo": "69024/1",
+    "materia_id": "m1784682653848",
+    "mesa_label": "Febrero",
+    "nota": 10,
+    "estado": "aprobado"
+  },
+  {
+    "id": 19,
+    "legajo": "69024/1",
+    "materia_id": "m1784682584887",
+    "mesa_label": "Dieicmbre",
+    "nota": 10,
+    "estado": "aprobado"
+  },
+  {
+    "id": 20,
+    "legajo": "69024/1",
+    "materia_id": "m1784682726621",
+    "mesa_label": "Junio",
+    "nota": 8,
+    "estado": "aprobado"
+  },
+  {
+    "id": 21,
+    "legajo": "69024/1",
+    "materia_id": "m1784682708453",
+    "mesa_label": "Junio",
+    "nota": 8,
+    "estado": "aprobado"
+  }
+]
