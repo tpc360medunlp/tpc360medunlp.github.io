@@ -1,0 +1,54 @@
+[
+  {
+    "id": "scf_1785122828819",
+    "legajo": "69024/1",
+    "apellido": "Laxagueborde",
+    "nombre": "Julieta",
+    "dni": "38589849",
+    "materia_id": "m1784681884860",
+    "fecha_examen": "25/07/2026",
+    "estado": "aprobado",
+    "docente_dni": "32527404",
+    "motivo": null,
+    "created_at": "2026-07-27T03:27:08.869199+00:00"
+  },
+  {
+    "id": "scf_1785123388879",
+    "legajo": "69024/1",
+    "apellido": "Laxagueborde",
+    "nombre": "Julieta",
+    "dni": "38589849",
+    "materia_id": "m1784681884860",
+    "fecha_examen": "27/07/2026",
+    "estado": "rechazado",
+    "docente_dni": "32527404",
+    "motivo": "No se presentó.",
+    "created_at": "2026-07-27T03:36:28.881768+00:00"
+  },
+  {
+    "id": "scf_1785866482986",
+    "legajo": "69024/1",
+    "apellido": "Laxagueborde",
+    "nombre": "Julieta",
+    "dni": "38589849",
+    "materia_id": "m1784681884860",
+    "fecha_examen": "04/08/2026",
+    "estado": "aprobado",
+    "docente_dni": "32527404",
+    "motivo": null,
+    "created_at": "2026-08-04T18:01:23.064385+00:00"
+  },
+  {
+    "id": "scf_1786134865436",
+    "legajo": "66410/4",
+    "apellido": "Gil",
+    "nombre": "Candela Jazmín",
+    "dni": "44839914",
+    "materia_id": "m1784681884860",
+    "fecha_examen": "07/08/2026",
+    "estado": "rechazado",
+    "docente_dni": "32527404",
+    "motivo": "",
+    "created_at": "2026-08-07T20:34:26.338473+00:00"
+  }
+]
