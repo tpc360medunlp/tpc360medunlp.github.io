@@ -1,0 +1,179 @@
+[
+  {
+    "clave": "teacherViewConfig",
+    "valor": {
+      "portfolio": {
+        "label": "Portfolio",
+        "orden": 5,
+        "enabled": true
+      },
+      "asistencia": {
+        "label": "Asistencia",
+        "orden": 2,
+        "enabled": true
+      },
+      "cronograma": {
+        "label": "Cronogramas",
+        "orden": 1,
+        "enabled": true
+      },
+      "certificados": {
+        "label": "Certificados",
+        "orden": 4,
+        "enabled": true
+      },
+      "calificaciones": {
+        "label": "Calificaciones",
+        "orden": 3,
+        "enabled": true
+      },
+      "solicitudAulas": {
+        "label": "Solicitud de aulas",
+        "orden": 6,
+        "enabled": true
+      }
+    },
+    "updated_at": "2026-07-25T14:40:30.685339+00:00"
+  },
+  {
+    "clave": "studentViewConfig",
+    "valor": {
+      "cude": {
+        "label": "Mi CUdE",
+        "orden": 7,
+        "enabled": true
+      },
+      "cartelera": {
+        "label": "Cartelera",
+        "orden": 1,
+        "enabled": true
+      },
+      "portfolio": {
+        "label": "Portfolio",
+        "orden": 2,
+        "enabled": true
+      },
+      "asistencia": {
+        "label": "Asistencia",
+        "orden": 3,
+        "enabled": true
+      },
+      "cronograma": {
+        "label": "Cronogramas",
+        "orden": 6,
+        "enabled": true
+      },
+      "notas_finales": {
+        "label": "Calificaciones · Finales",
+        "orden": 4,
+        "enabled": true
+      },
+      "notas_parciales": {
+        "label": "Calificaciones · Parciales",
+        "orden": 4,
+        "enabled": true
+      },
+      "certificados_finales": {
+        "label": "Certificados · Finales",
+        "orden": 5,
+        "enabled": true
+      },
+      "certificados_parciales": {
+        "label": "Certificados · Parciales",
+        "orden": 5,
+        "enabled": true
+      }
+    },
+    "updated_at": "2026-07-19T03:55:12.79662+00:00"
+  },
+  {
+    "clave": "certFinalConfig",
+    "valor": {
+      "fontSize": 12,
+      "membrete": "https://dbrhpbhueiwednrkkelb.supabase.co/storage/v1/object/sign/membretes/membrete_finales_1785120004810.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zYzVjMjdjNi0wNjFkLTQ4ZmYtYjE3OC0yYTNmNDU3ZDE0NjgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJtZW1icmV0ZXMvbWVtYnJldGVfZmluYWxlc18xNzg1MTIwMDA0ODEwLnBkZiIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODUxMjAwMDUsImV4cCI6MTgxNjY1NjAwNX0.Q87amPagASQtZnDM6G_RYym9UV0Q3nkNeXoQk-NWpW0",
+      "margenDer": 25,
+      "margenInf": 60,
+      "margenIzq": 25,
+      "margenSup": 80,
+      "textoBase": "La Dirección de la Tecnicatura en Prácticas Cardiológicas de la Facultad de Ciencias Médicas de la Universidad Nacional de La Plata certifica que el/la alumno/a {NOMBRE} {APELLIDO}, DNI {DNI}, se presentó a rendir el examen final de la asignatura {MATERIA} con fecha {FECHA_EXAMEN}.\n\nSe extiende el presente certificado para ser presentado ante quien corresponda.\n\nLa Plata, {FECHA_EMISION}."
+    },
+    "updated_at": "2026-07-19T04:02:29.368994+00:00"
+  },
+  {
+    "clave": "plantilla_aulas_url",
+    "valor": {
+      "url": "https://dbrhpbhueiwednrkkelb.supabase.co/storage/v1/object/sign/solicitud-aulas/plantilla.docx?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zYzVjMjdjNi0wNjFkLTQ4ZmYtYjE3OC0yYTNmNDU3ZDE0NjgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzb2xpY2l0dWQtYXVsYXMvcGxhbnRpbGxhLmRvY3giLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg0NTIwNDIwLCJleHAiOjE4MTYwNTY0MjB9.jQ-9GdXoKSDPHwxXb_Kqur0HHtlih5GRisfyPwpVzFA"
+    },
+    "updated_at": "2026-07-20T00:49:34.247615+00:00"
+  },
+  {
+    "clave": "asistencia_solocontrol_c1784681924691_2026-08-09",
+    "valor": {
+      "soloControl": true
+    },
+    "updated_at": "2026-08-09T03:11:34.981826+00:00"
+  },
+  {
+    "clave": "asistencia_solocontrol_tc1786297059115_2026-08-09",
+    "valor": {
+      "soloControl": false
+    },
+    "updated_at": "2026-08-09T18:34:43.860445+00:00"
+  },
+  {
+    "clave": "asistencia_cerrada_tc1786297059115_2026-08-09",
+    "valor": {
+      "cerrado": true
+    },
+    "updated_at": "2026-08-09T18:57:51.571121+00:00"
+  },
+  {
+    "clave": "asistencia_cerrada_c1784681924691_2026-08-09",
+    "valor": {
+      "cerrado": true
+    },
+    "updated_at": "2026-08-17T17:40:04.11988+00:00"
+  },
+  {
+    "clave": "asistencia_cerrada_c1784681924691_2026-07-25",
+    "valor": {
+      "cerrado": true
+    },
+    "updated_at": "2026-07-26T04:07:32.552996+00:00"
+  },
+  {
+    "clave": "asistencia_cerrada_c1784681924691_2026-07-08",
+    "valor": {
+      "cerrado": true
+    },
+    "updated_at": "2026-07-26T04:08:26.521919+00:00"
+  },
+  {
+    "clave": "certConfig",
+    "valor": {
+      "año": 2026,
+      "fontSize": 12,
+      "membrete": "https://dbrhpbhueiwednrkkelb.supabase.co/storage/v1/object/sign/membretes/membrete_parciales_1785119997655.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zYzVjMjdjNi0wNjFkLTQ4ZmYtYjE3OC0yYTNmNDU3ZDE0NjgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJtZW1icmV0ZXMvbWVtYnJldGVfcGFyY2lhbGVzXzE3ODUxMTk5OTc2NTUucGRmIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NTExOTk5OCwiZXhwIjoxODE2NjU1OTk4fQ.2dMK8sdQ8Ewm5_uKvFGzrkPDnnoMtJy_L9hwnvECt8U",
+      "margenDer": 25,
+      "margenInf": 60,
+      "margenIzq": 25,
+      "margenSup": 80,
+      "textoBase": "La Dirección de la Tecnicatura en Prácticas Cardiológicas de la Facultad de Ciencias Médicas de la Universidad Nacional de La Plata certifica que el/la alumno/a {NOMBRE} {APELLIDO}, DNI {DNI}, se presentó a rendir el examen parcial ({PARCIAL}, {FECHA_PARCIAL}) de la asignatura {MATERIA} el día {FECHA_EXAMEN}.\n\nSe extiende el presente certificado para ser presentado ante quien corresponda.\n\nLa Plata, {FECHA_EMISION}."
+    },
+    "updated_at": "2026-07-19T04:02:16.830998+00:00"
+  },
+  {
+    "clave": "asistencia_cerrada_c1784681924691_2026-08-17",
+    "valor": {
+      "cerrado": true
+    },
+    "updated_at": "2026-08-17T17:39:18.024949+00:00"
+  },
+  {
+    "clave": "asistencia_cerrada_c1784681924691_2026-08-07",
+    "valor": {
+      "cerrado": true
+    },
+    "updated_at": "2026-08-07T20:09:39.960787+00:00"
+  }
+]
