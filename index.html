@@ -2986,6 +2986,7 @@ async function cambiarCuentaGoogle() {
   localStorage.setItem('tpc360_role', currentRole || 'student');
   localStorage.removeItem('tpc360_verified');
   ['student','teacher','coordinator'].forEach(r => sessionStorage.removeItem('tpc360_last_view_'+r));
+  sessionStorage.removeItem('tpc360_last_notas');
   await _supabase.auth.signOut();
   googleEmail = '';
   document.getElementById('login-step1').style.display = 'block';
@@ -3019,6 +3020,7 @@ async function iniciarLoginGoogle() {
 async function doLogoutSupabase() {
   localStorage.removeItem('tpc360_verified');
   ['student','teacher','coordinator'].forEach(r => sessionStorage.removeItem('tpc360_last_view_'+r));
+  sessionStorage.removeItem('tpc360_last_notas');
   await _supabase.auth.signOut();
 }
 
@@ -3262,6 +3264,12 @@ async function enterApp() {
         ? lastView
         : (enabledGroups[0]?.view || 'teacher');
       switchTeacherView(targetView);
+      if (targetView === 'notas') {
+        try {
+          const guardado = JSON.parse(sessionStorage.getItem('tpc360_last_notas') || 'null');
+          if (guardado) renderNotasView(guardado.selCom, guardado.selParc, guardado.selFecha);
+        } catch (e) { /* si algo falla acá, se queda con la vista por defecto */ }
+      }
       setTimeout(() => showTeacherNotifications(getTeacherDni()), 600);
       actualizarBadgeAulas();
       actualizarBadgeCronogramaTeacher();
@@ -3292,6 +3300,7 @@ function doLogout() {
   stopQrIntervalsIfRunning();
   localStorage.removeItem('tpc360_verified');
   ['student','teacher','coordinator'].forEach(r => sessionStorage.removeItem('tpc360_last_view_'+r));
+  sessionStorage.removeItem('tpc360_last_notas');
   _supabase.auth.signOut().finally(() => {
     location.reload();
   });
@@ -4246,6 +4255,9 @@ function _renderNotasViewInternal(selectedComId, selectedParcial, selectedFecha)
   const selCom    = selectedComId    || comisiones[0].id;
   const selParc   = selectedParcial  || null;
   const selFecha  = selectedFecha    || null;
+  // Recordar en qué comisión/parcial/fecha estaba el docente, para volver directo
+  // ahí si el navegador recarga la página (por ejemplo, al volver de otra app).
+  sessionStorage.setItem('tpc360_last_notas', JSON.stringify({ selCom, selParc, selFecha }));
   const comision  = COMISIONES.find(c => c.id === selCom);
   const alumnos   = sortStudentsByApellido(comision?.alumnos || [], e => STUDENT_NAMES[e] || e);
   const comisionNotas  = comision;
