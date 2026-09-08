@@ -80,11 +80,11 @@
     "id": 24,
     "legajo": "66410/4",
     "skill_id": "s1785630964601",
-    "status": "pending",
+    "status": "validated",
     "fecha": "2026-08-07",
     "teacher_dni": "32527404",
     "obs": "",
     "satisfaccion": null,
-    "teacher_obs": null
+    "teacher_obs": ""
   }
 ]
