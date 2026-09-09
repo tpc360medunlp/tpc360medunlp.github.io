@@ -1,18 +1,5 @@
 [
   {
-    "id": "m1784682584887",
-    "nombre": "Fundamentos de la Práctica Cardiológica",
-    "docente_dni": "",
-    "año_carrera": "1",
-    "regimen": "sin_promocion",
-    "nota_promocion": null,
-    "criterio_promocion": null,
-    "regimen_cursada": "anual",
-    "cronograma": null,
-    "created_at": "2026-07-22T01:09:45.118446+00:00",
-    "cantidad_parciales": null
-  },
-  {
     "id": "m1784682637922",
     "nombre": "Anatomía Cardiovascular",
     "docente_dni": "",
@@ -206,6 +193,19 @@
     "cronograma": null,
     "created_at": "2026-07-22T01:15:27.396715+00:00",
     "cantidad_parciales": null
+  },
+  {
+    "id": "m1784682584887",
+    "nombre": "Fundamentos de la Práctica Cardiológica",
+    "docente_dni": "33788328",
+    "año_carrera": "1",
+    "regimen": "promocion",
+    "nota_promocion": 7,
+    "criterio_promocion": "primera_presentacion",
+    "regimen_cursada": "anual",
+    "cronograma": null,
+    "created_at": "2026-07-22T01:09:45.118446+00:00",
+    "cantidad_parciales": 2
   },
   {
     "id": "m1784681884860",
