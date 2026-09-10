@@ -748,13 +748,68 @@
     "lugar": null
   },
   {
-    "id": 79,
-    "materia_id": "m1784681884860",
+    "id": 102,
+    "materia_id": "m1784682726621",
     "año": 2026,
     "mesa_id": "ago1",
     "fecha": null,
     "cargado": false,
-    "anulada": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 101,
+    "materia_id": "m1784682708453",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 99,
+    "materia_id": "m1784682836237",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 103,
+    "materia_id": "m1784682653848",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 100,
+    "materia_id": "m1784682584887",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 105,
+    "materia_id": "m1784682823301",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
     "horario": null,
     "lugar": null
   },
@@ -765,8 +820,118 @@
     "mesa_id": "ago1",
     "fecha": "2026-08-10",
     "cargado": false,
-    "anulada": false,
+    "anulada": true,
     "horario": "8:00",
     "lugar": "Virtual"
+  },
+  {
+    "id": 104,
+    "materia_id": "m1784682884306",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 107,
+    "materia_id": "m1784682852189",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 108,
+    "materia_id": "m1784682870674",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 79,
+    "materia_id": "m1784681884860",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 110,
+    "materia_id": "m1784682778712",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 111,
+    "materia_id": "m1784682802771",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 112,
+    "materia_id": "m1784682762890",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 113,
+    "materia_id": "m1784682904004",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 114,
+    "materia_id": "m1784682927164",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
+  },
+  {
+    "id": 115,
+    "materia_id": "m1784682915495",
+    "año": 2026,
+    "mesa_id": "ago1",
+    "fecha": null,
+    "cargado": false,
+    "anulada": true,
+    "horario": null,
+    "lugar": null
   }
 ]
