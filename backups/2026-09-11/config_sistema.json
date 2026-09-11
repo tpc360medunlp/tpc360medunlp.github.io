@@ -128,6 +128,13 @@
     "updated_at": "2026-08-09T18:57:51.571121+00:00"
   },
   {
+    "clave": "asistencia_cerrada_c1784681924691_2026-08-09",
+    "valor": {
+      "cerrado": true
+    },
+    "updated_at": "2026-08-17T17:40:04.11988+00:00"
+  },
+  {
     "clave": "asistencia_cerrada_c1784681924691_2026-07-25",
     "valor": {
       "cerrado": true
@@ -154,6 +161,13 @@
       "textoBase": "La Dirección de la Tecnicatura en Prácticas Cardiológicas de la Facultad de Ciencias Médicas de la Universidad Nacional de La Plata certifica que el/la alumno/a {NOMBRE} {APELLIDO}, DNI {DNI}, se presentó a rendir el examen parcial ({PARCIAL}, {FECHA_PARCIAL}) de la asignatura {MATERIA} el día {FECHA_EXAMEN}.\n\nSe extiende el presente certificado para ser presentado ante quien corresponda.\n\nLa Plata, {FECHA_EMISION}."
     },
     "updated_at": "2026-07-19T04:02:16.830998+00:00"
+  },
+  {
+    "clave": "asistencia_cerrada_c1784681924691_2026-08-17",
+    "valor": {
+      "cerrado": false
+    },
+    "updated_at": "2026-08-17T17:39:18.024949+00:00"
   },
   {
     "clave": "asistencia_cerrada_c1784681924691_2026-08-07",
