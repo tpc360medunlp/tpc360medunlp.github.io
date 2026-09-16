@@ -6038,46 +6038,6 @@
     }
   },
   {
-    "legajo": "69024/1",
-    "nombre": "Julieta",
-    "apellido": "Laxagueborde",
-    "email": "fparola@med.unlp.edu.ar",
-    "legajo_completo": "069024/1",
-    "dni": "38589849",
-    "cude": {
-      "activo": false,
-      "estado": "rechazado",
-      "archivo": "Certificado_Laxagueborde_Julieta_Electrocardiografía_1er_Parcial_1era_Fecha_TPC.pdf",
-      "archivoUrl": "https://dbrhpbhueiwednrkkelb.supabase.co/storage/v1/object/sign/cude/cude_69024-1_1786229963954.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zYzVjMjdjNi0wNjFkLTQ4ZmYtYjE3OC0yYTNmNDU3ZDE0NjgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJjdWRlL2N1ZGVfNjkwMjQtMV8xNzg2MjI5OTYzOTU0LnBkZiIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODYyMjk5NjYsImV4cCI6MTgxNzc2NTk2Nn0.XLWvy5G4urBcS7wOkQAX5OP5vjM-BoOyaDniekHpcS0",
-      "vencimiento": "2026-07-01",
-      "motivoRechazo": "nada",
-      "fechaSolicitud": "08/08/2026"
-    },
-    "created_at": "2026-07-22T03:38:09.11294+00:00",
-    "novedades_vistas": {
-      "certStatus": {
-        "scf_1785122828819": "aprobado",
-        "scf_1785123388879": "rechazado",
-        "scf_1785866482986": "aprobado"
-      },
-      "cudeStatus": "rechazado",
-      "notasStatus": {
-        "c1784681924691_1er Parcial_1era Fecha": true
-      },
-      "skillStatus": {},
-      "cambioComisionStatus": {
-        "sol1785542477537": "rechazada",
-        "sol1785542535721": "aprobada",
-        "sol1785542681769": "aprobada",
-        "sol1785543080018": "rechazada",
-        "sol1785544221027": "rechazada",
-        "sol1785549321405": "rechazada",
-        "sol1785780993195": "aprobada",
-        "sol1785781038430": "aprobada"
-      }
-    }
-  },
-  {
     "legajo": "67240/9",
     "nombre": "Guadalupe Francessca",
     "apellido": "Alburqueque Palomino",
@@ -6219,5 +6179,47 @@
     "cude": null,
     "created_at": "2026-08-11T23:39:02.891078+00:00",
     "novedades_vistas": null
+  },
+  {
+    "legajo": "69024/1",
+    "nombre": "Julieta",
+    "apellido": "Laxagueborde",
+    "email": "laxaguebordejuli@gmail.com",
+    "legajo_completo": "069024/1",
+    "dni": "38589849",
+    "cude": {
+      "activo": true,
+      "estado": "validado",
+      "archivo": "Certificado_Laxagueborde_Julieta_Electrocardiografía_1er_Parcial_1era_Fecha_TPC.pdf",
+      "archivoUrl": "https://dbrhpbhueiwednrkkelb.supabase.co/storage/v1/object/sign/cude/cude_69024-1_1787014389116.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zYzVjMjdjNi0wNjFkLTQ4ZmYtYjE3OC0yYTNmNDU3ZDE0NjgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJjdWRlL2N1ZGVfNjkwMjQtMV8xNzg3MDE0Mzg5MTE2LnBkZiIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODcwMTQzOTEsImV4cCI6MTgxODU1MDM5MX0.3yamZK-4mTztibMy0b0cSlonAoDt7QeXP0EckvnpwOI",
+      "vencimiento": "2026-12-31",
+      "motivoRechazo": null,
+      "fechaSolicitud": "17/08/2026"
+    },
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {
+        "scf_1785122828819": "aprobado",
+        "scf_1785123388879": "rechazado",
+        "scf_1785866482986": "aprobado"
+      },
+      "cudeStatus": "validado",
+      "notasStatus": {
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {},
+      "cambioComisionStatus": {
+        "sol1785542477537": "rechazada",
+        "sol1785542535721": "aprobada",
+        "sol1785542681769": "aprobada",
+        "sol1785543080018": "rechazada",
+        "sol1785544221027": "rechazada",
+        "sol1785549321405": "rechazada",
+        "sol1785780993195": "aprobada",
+        "sol1785781038430": "aprobada",
+        "sol1787014465244": "aprobada",
+        "sol1787014515420": "aprobada"
+      }
+    }
   }
 ]
