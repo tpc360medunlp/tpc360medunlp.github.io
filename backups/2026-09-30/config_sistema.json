@@ -165,7 +165,7 @@
   {
     "clave": "asistencia_cerrada_c1784681924691_2026-08-17",
     "valor": {
-      "cerrado": true
+      "cerrado": false
     },
     "updated_at": "2026-08-17T17:39:18.024949+00:00"
   },
