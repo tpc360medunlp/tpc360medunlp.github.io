@@ -28,20 +28,6 @@
     "novedades_vistas": null
   },
   {
-    "dni": "28769839",
-    "nombre": "Fernando",
-    "apellido": "Mayo",
-    "email": "fmayo@med.unlp.edu.ar",
-    "roles": [
-      "teacher"
-    ],
-    "role_label": "Docente",
-    "cargo": "Ayudante Diplomado rentado",
-    "activo": true,
-    "created_at": "2026-07-22T00:56:55.521545+00:00",
-    "novedades_vistas": null
-  },
-  {
     "dni": "32527404",
     "nombre": "Franco",
     "apellido": "Parola",
@@ -62,6 +48,20 @@
       },
       "pendingCount": 0
     }
+  },
+  {
+    "dni": "28769839",
+    "nombre": "Fernando",
+    "apellido": "Mayo",
+    "email": "fmayo@med.unlp.edu.ar",
+    "roles": [
+      "teacher"
+    ],
+    "role_label": "Docente",
+    "cargo": "Ayudante Diplomado rentado",
+    "activo": true,
+    "created_at": "2026-07-22T00:56:55.521545+00:00",
+    "novedades_vistas": null
   },
   {
     "dni": "33788328",
