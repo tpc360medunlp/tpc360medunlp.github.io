@@ -1383,25 +1383,6 @@
     }
   },
   {
-    "legajo": "63531/9",
-    "nombre": "Iara Yael",
-    "apellido": "Gomez",
-    "email": "gomeziara252320@gmail.com",
-    "legajo_completo": "63531/9",
-    "dni": "44452689",
-    "cude": null,
-    "created_at": "2026-07-22T03:38:09.11294+00:00",
-    "novedades_vistas": {
-      "certStatus": {},
-      "cudeStatus": null,
-      "notasStatus": {
-        "c1784681924691_1er Parcial_1era Fecha": true
-      },
-      "skillStatus": {},
-      "cambioComisionStatus": {}
-    }
-  },
-  {
     "legajo": "66477/5",
     "nombre": "Brisa Mariana",
     "apellido": "Martinez",
@@ -6179,6 +6160,25 @@
     "cude": null,
     "created_at": "2026-08-11T23:39:02.891078+00:00",
     "novedades_vistas": null
+  },
+  {
+    "legajo": "63531/9",
+    "nombre": "Iara Yael",
+    "apellido": "Gomez",
+    "email": "gomeziara252320@gmail.com",
+    "legajo_completo": "63531/9",
+    "dni": "44452689",
+    "cude": null,
+    "created_at": "2026-07-22T03:38:09.11294+00:00",
+    "novedades_vistas": {
+      "certStatus": {},
+      "cudeStatus": null,
+      "notasStatus": {
+        "c1784681924691_1er Parcial_1era Fecha": true
+      },
+      "skillStatus": {},
+      "cambioComisionStatus": {}
+    }
   },
   {
     "legajo": "69024/1",
