@@ -1,0 +1,90 @@
+[
+  {
+    "id": 11,
+    "legajo": "68990/7",
+    "skill_id": "s1785630940632",
+    "status": "pending",
+    "fecha": "2026-08-07",
+    "teacher_dni": "42455146",
+    "obs": "",
+    "satisfaccion": 4,
+    "teacher_obs": null
+  },
+  {
+    "id": 16,
+    "legajo": "68990/7",
+    "skill_id": "s1785630964601",
+    "status": "validated",
+    "fecha": "2026-08-07",
+    "teacher_dni": "32527404",
+    "obs": "",
+    "satisfaccion": 4,
+    "teacher_obs": "Muy birn!"
+  },
+  {
+    "id": 12,
+    "legajo": "54454/3",
+    "skill_id": "s1785630940632",
+    "status": "validated",
+    "fecha": "2026-08-07",
+    "teacher_dni": "32527404",
+    "obs": "",
+    "satisfaccion": 3,
+    "teacher_obs": "Muy bien!"
+  },
+  {
+    "id": 14,
+    "legajo": "66410/4",
+    "skill_id": "s1785630940632",
+    "status": "validated",
+    "fecha": "2026-08-07",
+    "teacher_dni": "32527404",
+    "obs": "Realización de ecg de 12 derivación en rotación ",
+    "satisfaccion": 4,
+    "teacher_obs": "Excelente!"
+  },
+  {
+    "id": 15,
+    "legajo": "66477/5",
+    "skill_id": "s1785630940632",
+    "status": "rejected",
+    "fecha": "2026-08-07",
+    "teacher_dni": "32527404",
+    "obs": "ECG",
+    "satisfaccion": 4,
+    "teacher_obs": "Repasar."
+  },
+  {
+    "id": 17,
+    "legajo": "69023/0",
+    "skill_id": "s1785630940632",
+    "status": "validated",
+    "fecha": "2026-08-07",
+    "teacher_dni": "32527404",
+    "obs": "realizamos prácticas de Electrocardiograma en el Hospital Rossi, donde aprendimos muchísimas cosas nuevas con la vigilancia y enseñanza del docente a cargo Franco Parola. ⚕️🫀✨ (ojalá se repita!!) ",
+    "satisfaccion": 4,
+    "teacher_obs": "Excelente!"
+  },
+  {
+    "id": 13,
+    "legajo": "63572/9",
+    "skill_id": "s1785630940632",
+    "status": "validated",
+    "fecha": "2026-08-07",
+    "teacher_dni": "32527404",
+    "obs": "",
+    "satisfaccion": 4,
+    "teacher_obs": "Nuy bien!"
+  },
+  {
+    "id": 24,
+    "legajo": "66410/4",
+    "skill_id": "s1785630964601",
+    "status": "validated",
+    "fecha": "2026-08-07",
+    "teacher_dni": "32527404",
+    "obs": "",
+    "satisfaccion": null,
+    "teacher_obs": ""
+  }
+]
